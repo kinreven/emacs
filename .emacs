@@ -104,3 +104,6 @@
 (global-set-key (kbd "C-o") 'find-file)
 (global-set-key (kbd "C-w") 'kill-buffer)
 (global-set-key (kbd "C-b") 'list-buffers)
+
+;; Terminal key  remapping
+(define-key global-map (kbd "\r") [return])
