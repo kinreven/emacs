@@ -98,14 +98,15 @@
 (setq speedbar-smart-directory-expand-flag t)
 (add-hook 'speedbar-reconfigure-keymaps-hook
           '(lambda ()
-			 (define-key speedbar-mode-map [delete] 'speedbar-item-delete)
-			 (define-key speedbar-mode-map [backspace] 'speedbar-buffer-kill-buffer)
+             (define-key speedbar-mode-map [delete] 'speedbar-item-delete)
+             (define-key speedbar-mode-map [backspace] 'speedbar-buffer-kill-buffer)
              (define-key speedbar-mode-map [C-up] 'speedbar-up-directory)
              (define-key speedbar-mode-map [C-down] 'speedbar-edit-line)
              (define-key speedbar-mode-map [right] 'speedbar-flush-expand-line)
              (define-key speedbar-mode-map [left] 'speedbar-contract-line)))
 (setq sr-speedbar-auto-refresh t)
 (setq sr-speedbar-right-side nil)
+(setq sr-speedbar-skip-other-window-p t)
 (sr-speedbar-toggle)
 
 ;; Auto Complete
@@ -123,12 +124,23 @@
 ;(ecb-activate)
 
 ;; Shortcut Key
+(global-set-key (kbd "C-]") 'sr-speedbar-select-window)
 (global-set-key (kbd "C-\\") 'other-window)
 (global-set-key (kbd "C-p") 'next-buffer)
 (global-set-key (kbd "C-n") 'previous-buffer)
 (global-set-key (kbd "C-o") 'find-file)
-(global-set-key (kbd "C-w") 'kill-buffer)
+(global-set-key (kbd "M-w") 'kill-buffer)
+(global-set-key (kbd "M-s") 'save-buffer)
 (global-set-key (kbd "C-b") 'list-buffers)
+(global-set-key (kbd "C-=") 'enlarge-window)
+(global-set-key (kbd "C--") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-/") 'cscope-find-functions-calling-this-function)
+(global-set-key (kbd "C-?") 'cscope-find-this-symbol)
+(global-set-key (kbd "C-.") 'cscope-find-global-definition)
+(global-set-key (kbd "C-,") 'cscope-pop-mark)
+
+(global-set-key [f5] 'eshell)
+(global-set-key [f6] 'calendar)
 
 ;; Terminal key  remapping
 ;(define-key global-map (kbd "\r") [return])
