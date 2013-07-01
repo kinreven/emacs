@@ -135,6 +135,10 @@
 ;(require 'ecb)
 ;(ecb-activate)
 
+;; Org-mode
+(setq load-path (cons "~/.emacs.d/elisp/org-8.0.3/lisp" load-path))
+(require 'org-install)
+
 ;; Shortcut Key
 (global-set-key (kbd "C-]") 'sr-speedbar-select-window)
 (global-set-key (kbd "C-\\") 'other-window)
