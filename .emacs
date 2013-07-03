@@ -112,17 +112,16 @@
 (sr-speedbar-toggle)
 
 ;; Yasnippet
-(add-to-list 'load-path "~/.emacs.d/elisp/yasnippet-0.6.1c")
+(add-to-list 'load-path "~/.emacs.d/elisp/yasnippet-master")
 (require 'yasnippet)
-(yas/initialize)
-(yas/load-directory "~/.emacs.d/elisp/yasnippet-0.6.1c/snippets")
-(yas/global-mode 1)
-(yas/minor-mode-on)
+(yas-load-directory "~/.emacs.d/elisp/yasnippet-master/snippets")
+(yas-global-mode 1)
+(yas-minor-mode-on)
 
 ;; Auto Complete
-(add-to-list 'load-path "~/.emacs.d/elisp/auto-complete-1.3.1")
+(add-to-list 'load-path "~/.emacs.d/elisp/auto-complete-master")
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/elisp/auto-complete-1.3.1/dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elisp/auto-complete-master/dict")
 (global-auto-complete-mode t)
 (ac-config-default)
 
