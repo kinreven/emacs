@@ -80,6 +80,10 @@
 (load "~/.emacs.d/elisp/monokai-theme.el")
 (color-theme-monokai)
 
+;; CEDET
+(add-to-list 'load-path "~/.emacs.d/elisp/cedet-master")
+(require 'cedet)
+
 ;; C mode
 (add-hook 'c-mode-hook
 '(lambda ()
@@ -124,10 +128,6 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/elisp/auto-complete-master/dict")
 (global-auto-complete-mode t)
 (ac-config-default)
-
-;; CEDET
-(add-to-list 'load-path "~/.emacs.d/elisp/cedet-1.1")
-(require 'cedet)
 
 ;; ECB
 ;(add-to-list 'load-path "~/.emacs.d/elisp/ecb-master")
