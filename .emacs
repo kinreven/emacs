@@ -152,6 +152,9 @@
 (global-set-key (kbd "C-/") 'cscope-find-functions-calling-this-function)
 (global-set-key (kbd "C-?") 'cscope-find-this-symbol)
 (global-set-key (kbd "C-.") 'cscope-find-global-definition)
+(global-set-key (kbd "C->") 'cscope-find-this-text-string)
+(global-set-key (kbd "C-<") 'cscope-find-this-file)
+(global-set-key (kbd "C-i") 'cscope-index-files)  
 (global-set-key (kbd "C-,") 'cscope-pop-mark)
 
 (global-set-key [f5] 'eshell)
