@@ -1978,6 +1978,7 @@ using the mouse."
 		  cscope-directory base-database-file-name "\n"
 		  cscope-separator-line))
 	;; Add the correct database file to search
+    (setq options (cons "-dqk" options))
 	(setq options (cons base-database-file-name options))
 	(setq options (cons "-f" options))
 	(setq cscope-output-start (point))
