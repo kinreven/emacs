@@ -102,6 +102,7 @@
 (setq speedbar-show-unknown-files t)
 (setq speedbar-use-images nil)
 (setq speedbar-smart-directory-expand-flag t)
+(setq speedbar-tag-hierarchy-method '(speedbar-simple-group-tag-hierarchy)) 
 (add-hook 'speedbar-reconfigure-keymaps-hook
           '(lambda ()
              (define-key speedbar-mode-map [delete] 'speedbar-item-delete)
@@ -110,6 +111,12 @@
              (define-key speedbar-mode-map [C-down] 'speedbar-edit-line)
              (define-key speedbar-mode-map [right] 'speedbar-flush-expand-line)
              (define-key speedbar-mode-map [left] 'speedbar-contract-line)))
+(add-hook 
+ 'speedbar-timer-hook 
+ (lambda () 
+   (save-excursion 
+     (set-buffer speedbar-buffer) 
+     (speedbar-flush-expand-line)))) 
 (setq sr-speedbar-auto-refresh t)
 (setq sr-speedbar-right-side nil)
 (setq sr-speedbar-skip-other-window-p t)
@@ -146,7 +153,7 @@
 (global-set-key (kbd "C-o") 'find-file)
 (global-set-key (kbd "M-w") 'kill-buffer)
 (global-set-key (kbd "M-s") 'save-buffer)
-(global-set-key (kbd "C-b") 'list-buffers)
+(global-set-key (kbd "C-b") 'switch-to-buffer)
 (global-set-key (kbd "C-=") 'enlarge-window)
 (global-set-key (kbd "C--") 'enlarge-window-horizontally)
 (global-set-key (kbd "C-/") 'cscope-find-functions-calling-this-function)
