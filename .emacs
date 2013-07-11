@@ -119,7 +119,7 @@
      (speedbar-flush-expand-line)))) 
 (setq sr-speedbar-auto-refresh t)
 (setq sr-speedbar-right-side nil)
-(setq sr-speedbar-skip-other-window-p t)
+;(setq sr-speedbar-skip-other-window-p t)
 (sr-speedbar-toggle)
 
 ;; Yasnippet
@@ -146,8 +146,9 @@
 (require 'org-install)
 
 ;; Shortcut Key
-(global-set-key (kbd "C-]") 'sr-speedbar-select-window)
-(global-set-key (kbd "C-\\") 'other-window)
+;(global-set-key (kbd "C-]") 'sr-speedbar-select-window)
+(global-set-key (kbd "C-|") 'previous-multiframe-window) 
+(global-set-key (kbd "C-\\") 'next-multiframe-window)
 (global-set-key (kbd "C-p") 'next-buffer)
 (global-set-key (kbd "C-n") 'previous-buffer)
 (global-set-key (kbd "C-o") 'find-file)
@@ -162,6 +163,7 @@
 (global-set-key (kbd "C->") 'cscope-find-this-text-string)
 (global-set-key (kbd "C-<") 'cscope-find-this-file)
 (global-set-key (kbd "C-,") 'cscope-pop-mark)
+(global-set-key (kbd "C-t") 'cscope-index-files)
 
 (global-set-key [f5] 'eshell)
 (global-set-key [f6] 'calendar)
