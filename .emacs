@@ -141,6 +141,15 @@
 ;(require 'ecb)
 ;(ecb-activate)
 
+;; Makedown-mode
+(load "~/.emacs.d/elisp/markdown-mode.el")
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(setq markdown-command "pandoc -f markdown -t html")
+
 ;; Org-mode
 (setq load-path (cons "~/.emacs.d/elisp/org-8.0.3/lisp" load-path))
 (require 'org-install)
