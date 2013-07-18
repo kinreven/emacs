@@ -276,4 +276,21 @@ pre {
   pre code, pre tt {
     background-color: transparent;
     border: none; }
+
+@media screen and (min-width: 914px) { 
+    body { 
+        width: 854px; 
+        margin:0 auto; 
+    } 
+} 
+
+@media print { 
+  table, pre { 
+            page-break-inside: avoid; 
+        } 
+        pre { 
+            word-wrap: break-word; 
+        } 
+} 
+
 </style>
