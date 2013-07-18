@@ -62,10 +62,15 @@
 (auto-compression-mode 1)
 
 ;;Edit
+(setq kill-ring-max 200) 
+(setq enable-recursive-minibuffers t) 
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 (setq-default cursor-type 'box)
 (global-visual-line-mode 1)
+(recentf-mode 1) 
+(desktop-save-mode 1) 
+(ido-mode 1)
 
 ;; Color theme
 (add-to-list 'load-path "~/.emacs.d/elisp/color-theme-6.6.0")
@@ -88,6 +93,7 @@
 (add-hook 'c-mode-hook
 '(lambda ()
 (linum-mode 1)
+(hs-minor-mode 1) 
 (setq c-basic-offset 4)
 (setq tab-width 4)
 (setq indent-tabs-mode nil)))
@@ -154,6 +160,11 @@
 ;; Org-mode
 (setq load-path (cons "~/.emacs.d/elisp/org-8.0.3/lisp" load-path))
 (require 'org-install)
+
+;; iBuffer 
+(global-set-key (kbd "C-x C-b") 'ibuffer) 
+(autoload 'ibuffer "ibuffer" "List buffers." t) 
+(global-set-key (kbd "C-x C-d") 'ido-dired) 
 
 ;; Shortcut Key
 ;(global-set-key (kbd "C-]") 'sr-speedbar-select-window)
