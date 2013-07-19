@@ -67,10 +67,6 @@
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 (setq-default cursor-type 'box)
-(global-visual-line-mode 1)
-(recentf-mode 1) 
-(desktop-save-mode 1) 
-(ido-mode 1)
 
 ;; Color theme
 (add-to-list 'load-path "~/.emacs.d/elisp/color-theme-6.6.0")
@@ -191,3 +187,10 @@
 
 ;; Terminal key  remapping
 ;(define-key global-map (kbd "\r") [return])
+
+;; Global Mode
+(global-visual-line-mode 1)
+(ido-mode 1)
+(recentf-mode 1) 
+(desktop-save-mode 1) 
+
