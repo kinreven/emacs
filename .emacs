@@ -194,3 +194,8 @@
 (recentf-mode 1) 
 (desktop-save-mode 1) 
 
+;; I prefer cmd key for meta
+(setq mac-option-key-is-meta nil
+      mac-command-key-is-meta t
+      mac-command-modifier 'meta
+      mac-option-modifier 'none)
