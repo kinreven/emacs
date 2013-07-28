@@ -1,0 +1,12 @@
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (package-initialize)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  )
+
+(load "~/.emacs.d/init_osx.el")
+(load "~/.emacs.d/init_setting.el")
+(load "~/.emacs.d/init_package_load.el")
+(load "~/.emacs.d/init_prog_lang.el")
+(load "~/.emacs.d/init_key_binding.el")
+(load "~/.emacs.d/init_global.el")
