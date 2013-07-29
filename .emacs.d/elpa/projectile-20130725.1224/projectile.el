@@ -101,7 +101,7 @@ Otherwise consider the current directory the project root."
 ;; variables
 (defvar projectile-project-root-files
   '(".projectile" "project.clj" ".git" ".hg" ".fslckout" ".bzr" "_darcs"
-    "rebar.config" "pom.xml" "build.sbt" "Gemfile" "Makefile")
+    "rebar.config" "pom.xml" "build.sbt" "Gemfile" "Makefile" ".svn")
   "A list of files considered to mark the root of a project.")
 
 (defvar projectile-globally-ignored-files
@@ -109,7 +109,7 @@ Otherwise consider the current directory the project root."
   "A list of files globally ignored by projectile.")
 
 (defvar projectile-globally-ignored-directories
-  '(".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs")
+  '(".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".svn")
   "A list of directories globally ignored by projectile.")
 
 (defvar projectile-find-file-hook nil

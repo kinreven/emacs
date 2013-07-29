@@ -170,6 +170,7 @@ nil
   (if (get-process "ascope") (kill-process (get-process "ascope")))
   (if (get-buffer "*ascope*") (kill-buffer (get-buffer "*ascope*")))
   (setq default-directory dir)
+  (call-process "cscope-indexer")
   (start-process "ascope" "*ascope*" "cscope" "-ld" "-f" "cscope.out")
   (set-process-filter (get-process "ascope") 'ascope-filter)
   (with-current-buffer "*ascope*"

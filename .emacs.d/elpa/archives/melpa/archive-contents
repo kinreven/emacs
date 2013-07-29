@@ -177,7 +177,7 @@
 	       (1 6 8)))
 	     "Weblog maintenance via XML-RPC APIs [bzr]" single])
  (web-mode .
-	   [(20130725 827)
+	   [(20130728 2202)
 	    nil "major mode for editing html templates [github]" single])
  (web .
       [(20130429 1926)
@@ -577,7 +577,7 @@
 	       [(20111113 1231)
 		nil "special lisp mode for evaluating code into running stumpwm [git]" single])
  (stripe-buffer .
-		[(20130528 48)
+		[(20130728 1355)
 		 ((cl-lib
 		   (1 0)))
 		 "Use a different background for even and odd lines [github]" single])
@@ -977,7 +977,7 @@
 	   [(20121207 1930)
 	    nil "Roy major mode [github]" single])
  (robe .
-       [(20130727 2313)
+       [(20130728 1241)
 	((inf-ruby
 	  (2 3 0)))
 	"Code navigation, documentation lookup and completion for Ruby [github]" tar])
@@ -1177,7 +1177,7 @@
 	[(20130324 1305)
 	 nil "Visual Popup User Interface [github]" single])
  (pophint .
-	  [(20130717 1350)
+	  [(20130729 700)
 	   ((popup
 	     (0 5 0))
 	    (log4e
@@ -1414,7 +1414,7 @@
 	       [(20130608 1434)
 		nil "Toodledo integration for Emacs Org mode [github]" tar])
  (org-reveal .
-	     [(20130723 1410)
+	     [(20130729 1007)
 	      ((org
 		(8 0)))
 	      "reveal.js Presentation Back-End for Org Export Engine [github]" single])
@@ -1512,7 +1512,7 @@
 			 (24 2)))
 		       "Display org properties in the agenda buffer. [github]" single])
  (org .
-      [(20130728 1017)
+      [(20130728 2140)
        nil "Outline-based notes management and organizer [git]" tar])
  (openwith .
 	   [(20120531 1636)
@@ -1592,7 +1592,7 @@
 		     (9)))
 		   "decompilation extension for nrepl.el [github]" single])
  (nrepl .
-	[(20130726 2149)
+	[(20130728 710)
 	 ((clojure-mode
 	   (2 0 0))
 	  (cl-lib
@@ -1738,7 +1738,7 @@
 		  [(20130607 1642)
 		   nil "Provide vi-like cursor movement that's easy on the fingers [github]" single])
  (mo-git-blame .
-	       [(20120917 736)
+	       [(20130728 1717)
 		nil "An interactive, iterative 'git blame' mode for Emacs [github]" single])
  (mmm-mode .
 	   [(20130606 7)
@@ -1881,7 +1881,7 @@
 			       [(20130518 0)
 				nil "Advice for magit-log-edit-commit [github]" single])
  (magit .
-	[(20130724 1937)
+	[(20130726 1125)
 	 nil "control Git from Emacs [github]" tar])
  (mag-menu .
 	   [(20130224 56)
@@ -2198,17 +2198,14 @@
 	     [(20130419 1158)
 	      nil "Interactively send parts of an Emacs buffer to an interpreter [github]" single])
  (isearch-symbol-at-point .
-			  [(20130531 1033)
-			   nil "No description available. [github]" single])
+			  [(20130728 952)
+			   nil "Use isearch to search for the symbol at point [github]" single])
  (isearch+ .
 	   [(20130723 2336)
 	    nil "Extensions to `isearch.el'. [wiki]" single])
  (irfc .
        [(20120824 1735)
 	nil "Interface for IETF RFC document. [wiki]" single])
- (ir_black-theme .
-		 [(20120503 1930)
-		  nil "No description available. [github]" single])
  (ir-black-theme .
 		 [(20130303 255)
 		  nil "Port of ir-black theme [github]" single])
@@ -2594,7 +2591,7 @@
 	   (1 2)))
 	 "Emacs client for hastebin (http://hastebin.com/about.md) [github]" single])
  (haskell-mode .
-	       [(20130727 2006)
+	       [(20130728 1338)
 		nil "A Haskell editing mode [github]" tar])
  (hardhat .
 	  [(20130522 1243)
@@ -2669,7 +2666,7 @@
 	      (20121108)))
 	    "A set of defaults targeted at GUI text editor diaspora. [github]" tar])
  (grandshell-theme .
-		   [(20130510 2116)
+		   [(20130728 1625)
 		    nil "Dark color theme for Emacs > 24 with intensive colors. [github]" tar])
  (gplusify .
 	   [(20121211 1422)
@@ -2776,7 +2773,7 @@
 		       (0 1 1)))
 		     "Fringe version of git-gutter.el [github]" single])
  (git-gutter+ .
-	      [(20130728 922)
+	      [(20130728 1628)
 	       nil "Manage Git hunks straight from the buffer [github]" single])
  (git-gutter .
 	     [(20130613 2232)
@@ -3054,7 +3051,7 @@
 			      (24 1)))
 			    "Change mode line color with Flycheck status [github]" single])
  (flycheck .
-	   [(20130727 141)
+	   [(20130728 1724)
 	    ((s
 	      (1 6 0))
 	     (dash
@@ -3065,13 +3062,17 @@
 	      (24 1)))
 	    "On-the-fly syntax checking (Flymake done right) [github]" tar])
  (flx-ido .
-	  [(20130716 858)
+	  [(20130728 820)
 	   ((flx
-	     (0 1)))
+	     (0 1))
+	    (cl-lib
+	     (0 3)))
 	   "flx integration for ido [github]" single])
  (flx .
-      [(20130716 1515)
-       nil "fuzzy matching with good sorting [github]" single])
+      [(20130728 2028)
+       ((cl-lib
+	 (0 3)))
+       "fuzzy matching with good sorting [github]" single])
  (flex-isearch .
 	       [(20130508 1703)
 		nil "Flex matching (like ido) in isearch. [hg]" single])
@@ -3093,6 +3094,9 @@
 	   (tabulated-list
 	    (0)))
 	  "Quickly navigate to FIXME notices in code [github]" single])
+ (fit-frame .
+	    [(20130723 2311)
+	     nil "Resize a frame.  In particular, fit a frame to its buffers. [wiki]" single])
  (fiplr .
 	[(20130713 2058)
 	 ((grizzl
@@ -3146,7 +3150,7 @@
 	      (0 3 1)))
 	   "File activity logger [github]" single])
  (f .
-    [(20130719 2131)
+    [(20130729 951)
      ((s
        (1 6 0))
       (dash
@@ -3779,7 +3783,7 @@
 	       [(20090510 2255)
 		nil "Mode for editing crontab files [github]" single])
  (creole .
-	 [(20130727 33)
+	 [(20130729 35)
 	  ((noflet
 	    (0 0 3))
 	   (kv
@@ -3826,7 +3830,7 @@
 		   (0 6 8)))
 		 "company-mode completion back-end for CMake [github]" tar])
  (company .
-	  [(20130604 316)
+	  [(20130728 1301)
 	   nil "Modular in-buffer completion framework [github]" tar])
  (commander .
 	    [(20130714 1037)
@@ -4040,8 +4044,8 @@
 			       [(20130401 1436)
 				nil "A brown/orange light-on-dark theme for Emacs 24 (deftheme). [github]" single])
  (bind-key .
-	   [(20130427 1719)
-	    nil "No description available. [github]" single])
+	   [(20130728 945)
+	    nil "A simple way to manage personal keybindings [github]" single])
  (bibretrieve .
 	      [(20130611 1145)
 	       ((reftex
@@ -4072,7 +4076,7 @@
 	      (2 36)))
 	    "Extra commands for BBDB [github]" single])
  (bbdb .
-       [(20130727 1650)
+       [(20130728 2143)
 	nil "core of BBDB [git]" tar])
  (bbcode-mode .
 	      [(20130227 1437)
@@ -4332,8 +4336,5 @@
 	    nil "Python TDD minor mode [github]" single])
  (abc-mode .
 	   [(20130607 917)
-	    nil "Major mode for editing abc music files [github]" single])
- (cm-mode .
-	  [(20120814 1203)
-	   nil "Wrapper for CodeMirror-style Emacs modes [github]" single]))
+	    nil "Major mode for editing abc music files [github]" single]))
 
