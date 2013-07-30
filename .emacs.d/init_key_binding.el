@@ -57,14 +57,14 @@
     (if arg
       (scroll-down arg)
       (scroll-down 3)))
-(global-set-key (kbd "C-i") 'previous-line)
-(global-set-key (kbd "C-k") 'next-line)
-(global-set-key (kbd "C-j") 'backward-char)
-(global-set-key (kbd "C-l") 'forward-char)
-(global-set-key (kbd "M-i") 'backward-paragraph)
-(global-set-key (kbd "M-k") 'forward-paragraph)
-(global-set-key (kbd "M-j") 'backward-word)
-(global-set-key (kbd "M-l") 'forward-word)
+(global-set-key (kbd "M-i") 'previous-line)
+(global-set-key (kbd "M-k") 'next-line)
+(global-set-key (kbd "M-j") 'backward-char)
+(global-set-key (kbd "M-l") 'forward-char)
+(global-set-key (kbd "C-i") 'backward-paragraph)
+(global-set-key (kbd "C-k") 'forward-paragraph)
+(global-set-key (kbd "C-j") 'backward-word)
+(global-set-key (kbd "C-l") 'forward-word)
 (global-set-key (kbd "M-p") 'window-move-up)        
 (global-set-key (kbd "M-n") 'window-move-down)
 
@@ -73,12 +73,16 @@
 (global-set-key (kbd "C-\\") 'next-multiframe-window)
 (global-set-key (kbd "C-=") 'enlarge-window)
 (global-set-key (kbd "C--") 'enlarge-window-horizontally)
-(global-set-key (kbd "M--") 'shrink-window)
-(global-set-key (kbd "M-=") 'shrink-window-horizontally)
+(global-set-key (kbd "M-=") 'shrink-window)
+(global-set-key (kbd "M--") 'shrink-window-horizontally)
 (global-set-key (kbd "M-2") 'split-window-below)
 (global-set-key (kbd "M-3") 'split-window-right)
 (global-set-key (kbd "M-0") 'delete-window)
 (global-set-key (kbd "M-1") 'delete-other-windows)
+
+;; Frame manage
+(global-set-key (kbd "M-N") 'new-frame)
+(global-set-key (kbd "M-W") 'delete-frame)
 
 ;; Function key
 (global-set-key [f5] (lambda () (interactive) (eshell)))
