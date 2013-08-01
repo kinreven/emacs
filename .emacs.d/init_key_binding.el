@@ -50,7 +50,7 @@
     (interactive "P")
     (if arg
       (scroll-up arg)
-      (scroll-up 2)))
+      (scroll-up 3)))
 (defun window-move-down (&optional arg)
   "Current window move-down 3 lines."
     (interactive "P")
