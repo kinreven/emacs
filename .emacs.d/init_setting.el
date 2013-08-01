@@ -33,6 +33,7 @@
 (setq term-buffer-maximum-size 0)
 (setq uniquify-buffer-name-style 'forward)
 (setq scroll-step 1 scroll-margin 3 scroll-conservatively 10000)
+(setq track-eol t)
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 (setq-default cursor-type 'box)
