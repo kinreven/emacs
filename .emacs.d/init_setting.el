@@ -7,7 +7,6 @@
  '(line-number-mode t)
  '(inhibit-startup-message t)
  '(show-paren-mode t)
- '(cua-mode t nil (cua-base))
  '(current-language-environment "UTF-8")
  '(ecb-options-version "2.40")
  '(tool-bar-mode nil)

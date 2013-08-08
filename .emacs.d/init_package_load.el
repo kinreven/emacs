@@ -28,14 +28,6 @@
 ;(setq speedbar-use-images nil)
 ;(setq speedbar-smart-directory-expand-flag t)
 ;(setq speedbar-tag-hierarchy-method '(speedbar-simple-group-tag-hierarchy))
-;(add-hook 'speedbar-reconfigure-keymaps-hook
-;          '(lambda ()
-;             (define-key speedbar-mode-map [delete] 'speedbar-item-delete)
-;             (define-key speedbar-mode-map [backspace] 'speedbar-buffer-kill-buffer)
-;             (define-key speedbar-mode-map [C-up] 'speedbar-up-directory)
-;             (define-key speedbar-mode-map [C-down] 'speedbar-edit-line)
-;             (define-key speedbar-mode-map [right] 'speedbar-flush-expand-line)
-;             (define-key speedbar-mode-map [left] 'speedbar-contract-line)))
 ;(add-hook 'speedbar-timer-hook
 ;          (lambda ()
 ;            (save-excursion
