@@ -34,6 +34,7 @@
 
 ;; redefine emacs keybinding
 (global-set-key (kbd "C-\\") 'other-window)
+(global-set-key (kbd "M-\\") 'other-window)
 (global-set-key (kbd "C-t") 'set-mark-command)
 (global-set-key (kbd "M-t") 'set-mark-command)
 
