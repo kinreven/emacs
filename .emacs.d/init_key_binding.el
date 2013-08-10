@@ -58,8 +58,8 @@
 ;; Window layout 
 (setq winner-dont-bind-my-keys t) 
 (winner-mode t) 
-(global-set-key (kbd "C-x u") 'winner-undo) 
-(global-set-key (kbd "C-x U") 'winner-redo)
+(global-set-key (kbd "C-x p") 'winner-undo) 
+(global-set-key (kbd "C-x n") 'winner-redo)
 
 ;; Movement
 ;(define-key key-translation-map (kbd "C-m") )
