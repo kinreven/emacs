@@ -86,7 +86,12 @@
 (define-key input-decode-map (kbd "M-h") (kbd "M-<DEL>"))     ;; Translate M-h to M-DEL
 
 ;; Mark region
-(global-set-key (kbd "C-x l") 'mark-paragraph)
+(defun mark-current-line ()
+  "Mark the current line"
+  (interactive)
+  (end-of-line) ; move to end of line
+  (set-mark (line-beginning-position)))
+(global-set-key (kbd "C-x l") 'mark-current-line)
 (global-set-key (kbd "C-x h") 'mark-whole-buffer)
 
 ;; Transpose
