@@ -62,12 +62,11 @@
 (global-set-key (kbd "C-x n") 'winner-redo)
 
 ;; Movement
-;(define-key key-translation-map (kbd "C-m") )
 (keyboard-translate ?\C-i ?\H-i)
-(keyboard-translate ?\C-m ?\H-m)
-;; Rebind then accordantly: 
+(keyboard-translate ?\C-m ?\H-m): 
 (global-set-key [?\H-m] 'set-mark-command)
 (global-set-key [?\H-i] (kbd "C-p"))
+
 (define-key key-translation-map (kbd "M-m") (kbd "C-@"))     
 (define-key key-translation-map (kbd "C-k") (kbd "C-n"))
 (define-key key-translation-map (kbd "C-j") (kbd "C-b"))
