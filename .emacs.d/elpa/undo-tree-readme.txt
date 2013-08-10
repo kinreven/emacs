@@ -180,9 +180,7 @@ C-q  (`undo-tree-visualizer-abort')
 
 Persistent undo history:
 
-Note: Requires a recent development version of Emacs checked out out from
-      the Emacs bzr repository. All stable versions of Emacs currently
-      break this feature.
+Note: Requires Emacs version 24.3 or higher.
 
 `undo-tree-auto-save-history' (variable)
    automatically save and restore undo-tree history along with buffer
@@ -207,7 +205,7 @@ Compressing undo history:
 
   (defadvice undo-tree-make-history-save-file-name
     (after undo-tree activate)
-    (setq concat ad-return-value ".gz"))
+    (setq ad-return-value (concat ad-return-value ".gz")))
 
 
 
