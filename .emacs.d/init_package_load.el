@@ -15,7 +15,7 @@
 
 ;; Windows number
 (require 'window-number)
-(window-number-meta-mode t)
+(window-number-meta-mode 1)
 
 ;; Scope
 (require 'ascope)
@@ -85,3 +85,4 @@
 (add-to-list 'auto-mode-alist '("\\.mdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (setq markdown-command "cd ~/.emacs.d/ && pandoc -s -S -f markdown -t html -H github.css")
+

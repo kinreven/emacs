@@ -30,7 +30,7 @@
 (setq kill-ring-max 200)
 (setq enable-recursive-minibuffers t)
 (setq term-buffer-maximum-size 0)
-(setq uniquify-buffer-name-style 'forward)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (setq scroll-step 1 scroll-margin 3 scroll-conservatively 10000)
 (setq track-eol t)
 (setq-default tab-width 4)
