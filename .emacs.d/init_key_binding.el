@@ -24,6 +24,7 @@
 (global-set-key (kbd "C-c o") 'projectile-find-file)
 (global-set-key (kbd "C-c f") 'projectile-find-file-in-directory)
 (global-set-key (kbd "C-c g") 'projectile-grep)
+(global-set-key (kbd "C-c m") 'projectile-multi-occur)
 
 ;; CScope
 (global-set-key (kbd "C-/") 'ascope-find-functions-calling-this-function)
@@ -34,7 +35,6 @@
 
 ;; Files
 (global-set-key (kbd "C-x f") 'ido-find-file)
-(global-set-key (kbd "C-o") 'ido-find-file)
 (global-set-key (kbd "C-x s") 'save-buffer)
 (global-set-key (kbd "C-x C-s") 'save-some-buffers)
 (global-set-key (kbd "C-x c") 'save-buffers-kill-emacs)
@@ -58,8 +58,8 @@
 ;; Window layout 
 (setq winner-dont-bind-my-keys t) 
 (winner-mode t) 
-(global-set-key (kbd "C-x p") 'winner-undo) 
-(global-set-key (kbd "C-x n") 'winner-redo)
+(global-set-key (kbd "C-c u") 'winner-undo) 
+(global-set-key (kbd "C-c r") 'winner-redo)
 
 ;; Movement
 (keyboard-translate ?\C-i ?\H-i)
@@ -97,3 +97,9 @@
 ;; Transpose
 (global-set-key (kbd "C-t") 'transpose-lines)
 (global-set-key (kbd "M-t") 'transpose-paragraphs)
+
+;; Goto line
+(global-set-key (kbd "M-g") 'goto-line)
+
+;; Window switch
+(global-set-key [C-tab] 'other-window)

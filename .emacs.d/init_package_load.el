@@ -1,6 +1,24 @@
 ;; Color theme
 (require 'monokai-theme)
 
+;; Uniqulfy buffername
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+(setq uniquify-separator "/")
+(setq uniquify-after-kill-buffer-p t)    ; rename after killing uniquified
+(setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
+
+;; Ido mode
+(require 'ido)
+(require 'ido-ubiquitous)
+(require 'flx-ido)
+(ido-mode 1)
+(ido-ubiquitous-mode 1)
+(flx-ido-mode 1)
+
+;; Smex
+(require 'smex)
+
 ;; Undo Tree
 (require 'undo-tree)
 (global-undo-tree-mode 1)
@@ -11,6 +29,8 @@
 
 ;; Smartparens
 (require 'smartparens-config)
+(setq sp-base-key-bindings 'paredit)
+(setq sp-autoskip-closing-pair 'always)
 (smartparens-global-mode t)
 
 ;; Windows number
