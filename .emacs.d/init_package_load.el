@@ -45,26 +45,6 @@
 (projectile-global-mode)
 (setq projectile-enable-caching t)
 
-;; ECB
-;(require 'ecb)
-;(ecb-activate)
-
-;; Speedbar
-;(load "~/.emacs.d/package/sr-speedbar.el")
-;(require 'sr-speedbar)
-;(setq speedbar-show-unknown-files t)
-;(setq speedbar-use-images nil)
-;(setq speedbar-smart-directory-expand-flag t)
-;(setq speedbar-tag-hierarchy-method '(speedbar-simple-group-tag-hierarchy))
-;(add-hook 'speedbar-timer-hook
-;          (lambda ()
-;            (save-excursion
-;              (set-buffer speedbar-buffer)
-;              (speedbar-flush-expand-line))))
-;(setq sr-speedbar-auto-refresh t)
-;(setq sr-speedbar-right-side nil)
-;(sr-speedbar-toggle)
-
 ;; Yasnippet
 (require 'yasnippet)
 (yas-load-directory "~/.emacs.d/elpa/yasnippet-20130722.1832/snippets")

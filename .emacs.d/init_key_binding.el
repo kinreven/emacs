@@ -15,6 +15,8 @@
                                        (smex-initialize))
                                    (global-set-key [(shift meta x)] 'smex-major-mode-commands)
                                    (smex-major-mode-commands)))
+;; Dired Plus
+(add-hook 'dired-mode-hook (lambda () (interactive) (define-key dired-mode-map [backspace] (kbd "^"))))
 
 ;; Undo Tree
 (global-set-key (kbd "C-u") 'undo-tree-undo)
@@ -84,6 +86,11 @@
 (setq help-char (string-to-char "<f1>"))                      ;; Bind ONLY F1 to help, not C-h
 (define-key input-decode-map (kbd "C-h") (kbd "DEL"))         ;; Translate C-h to DEL ;; FIXME:  Should be in emacs 22, doens't work.
 (define-key input-decode-map (kbd "M-h") (kbd "M-<DEL>"))     ;; Translate M-h to M-DEL
+
+;; Function key
+(global-set-key [f5] (lambda () (interactive) (eshell t)))
+(global-set-key [f6] (lambda () (interactive) (serial-term "/dev/ttyS0" 0)))
+(add-hook 'term-mode-hook (lambda () (interactive) (yas-minor-mode -1)))
 
 ;; Mark region
 (defun mark-current-line ()
