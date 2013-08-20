@@ -3,7 +3,7 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "smartparens" "smartparens.el" (21006 20008
+;;;### (autoloads nil "smartparens" "smartparens.el" (21011 31980
 ;;;;;;  0 0))
 ;;; Generated autoloads from smartparens.el
 
@@ -53,7 +53,7 @@ You can enable pre-set bindings by customizing
 \(fn &optional ARG)" t nil)
 
 (defvar smartparens-global-mode nil "\
-Non-nil if Smartparens-Global mode is enabled.
+Non-nil if Smartparens-global mode is enabled.
 See the command `smartparens-global-mode' for a description of this minor mode.
 Setting this variable directly does not take effect;
 either customize it (see the info node `Easy Customization')
@@ -63,7 +63,7 @@ or call the function `smartparens-global-mode'.")
 
 (autoload 'smartparens-global-mode "smartparens" "\
 Toggle Smartparens mode in all buffers.
-With prefix ARG, enable Smartparens-Global mode if ARG is positive;
+With prefix ARG, enable Smartparens-global mode if ARG is positive;
 otherwise, disable it.  If called from Lisp, enable the mode if
 ARG is omitted or nil.
 
@@ -93,7 +93,7 @@ support custom pairs.
 \(fn &optional ARG)" t nil)
 
 (defvar show-smartparens-global-mode nil "\
-Non-nil if Show-Smartparens-Global mode is enabled.
+Non-nil if Show-smartparens-global mode is enabled.
 See the command `show-smartparens-global-mode' for a description of this minor mode.
 Setting this variable directly does not take effect;
 either customize it (see the info node `Easy Customization')
@@ -102,14 +102,14 @@ or call the function `show-smartparens-global-mode'.")
 (custom-autoload 'show-smartparens-global-mode "smartparens" nil)
 
 (autoload 'show-smartparens-global-mode "smartparens" "\
-Toggle Show-Smartparens mode in all buffers.
-With prefix ARG, enable Show-Smartparens-Global mode if ARG is positive;
+Toggle Show-smartparens mode in all buffers.
+With prefix ARG, enable Show-smartparens-global mode if ARG is positive;
 otherwise, disable it.  If called from Lisp, enable the mode if
 ARG is omitted or nil.
 
-Show-Smartparens mode is enabled in all buffers where
+Show-smartparens mode is enabled in all buffers where
 `turn-on-show-smartparens-mode' would do it.
-See `show-smartparens-mode' for more information on Show-Smartparens mode.
+See `show-smartparens-mode' for more information on Show-smartparens mode.
 
 \(fn &optional ARG)" t nil)
 
@@ -127,7 +127,7 @@ Turn off `show-smartparens-mode'.
 
 ;;;### (autoloads nil nil ("smartparens-config.el" "smartparens-latex.el"
 ;;;;;;  "smartparens-lua.el" "smartparens-pkg.el" "smartparens-ruby.el")
-;;;;;;  (21006 20009 116803 0))
+;;;;;;  (21011 31981 69017 0))
 
 ;;;***
 

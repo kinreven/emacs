@@ -2,6 +2,9 @@
 (autoload 'ibuffer "ibuffer" "List buffers." t)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
+;; iMenu 
+(global-set-key (kbd "C-x g") 'imenu)
+
 ;; Smex
 (global-set-key [(meta x)] (lambda ()
                              (interactive)

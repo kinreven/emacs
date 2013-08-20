@@ -3,8 +3,8 @@
 ;; Copyright (C) 2012 Magnar Sveen
 
 ;; Author: Magnar Sveen <magnars@gmail.com>
-;; Version: 20130617.1851
-;; X-Original-Version: 1.6.1
+;; Version: 20130818.822
+;; X-Original-Version: 1.6.2
 ;; Keywords: strings
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -146,7 +146,7 @@ This is a simple wrapper around the built-in `split-string'."
   (s-chop-suffixes '("\n" "\r") s))
 
 (defun s-truncate (len s)
-  "If S is longer than LEN, cut it down and add ... at the end."
+  "If S is longer than LEN, cut it down to LEN - 3 and add ... at the end."
   (if (> (length s) len)
       (format "%s..." (substring s 0 (- len 3)))
     s))
@@ -174,7 +174,7 @@ This is a simple wrapper around the built-in `split-string'."
             s)))
 
 (defun s-pad-right (len padding s)
-  "If S is shorter than LEN, pad it with PADDING on the left."
+  "If S is shorter than LEN, pad it with PADDING on the right."
   (let ((extra (max 0 (- len (length s)))))
     (concat s
             (make-string extra (string-to-char padding)))))
@@ -286,7 +286,7 @@ This is a simple wrapper around the built-in `string-match-p'."
   "In S, is the first letter upper case, and all other letters lower case?"
   (let ((case-fold-search nil))
     (s--truthy?
-     (string-match-p "^[A-ZÆØÅ][^A-ZÆØÅ]*$" s))))
+     (string-match-p "^[[:upper:]][^[:upper:]]*$" s))))
 
 (defun s-numeric? (s)
   "Is S a number?"
@@ -405,9 +405,9 @@ When START is non-nil the search will start at that index."
 (defun s-split-words (s)
   "Split S into list of words."
   (s-split
-   "[^A-Za-z0-9]+"
+   "[^[:lower:][:upper:]0-9]+"
    (let ((case-fold-search nil))
-     (replace-regexp-in-string "\\([a-z]\\)\\([A-Z]\\)" "\\1 \\2" s))
+     (replace-regexp-in-string "\\([[:lower:]]\\)\\([[:upper:]]\\)" "\\1 \\2" s))
    t))
 
 (defun s--mapcar-head (fn-head fn-rest list)
@@ -432,7 +432,7 @@ When START is non-nil the search will start at that index."
   (s-join "-" (mapcar 'downcase (s-split-words s))))
 
 (defun s-capitalized-words (s)
-  "Convert S to Capitalized Words."
+  "Convert S to Capitalized words."
   (let ((words (s-split-words s)))
     (s-join " " (cons (capitalize (car words)) (mapcar 'downcase (cdr words))))))
 

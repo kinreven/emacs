@@ -1,17 +1,15 @@
 ;;; projectile.el --- Manage and navigate projects in Emacs easily
 
-;; Copyright © 2011-2013 Bozhidar Batsov
+;; Copyright © 2011-2013 Bozhidar Batsov <bozhidar@batsov.com>
 
-;; Author: Bozhidar Batsov
+;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/projectile
 ;; Keywords: project, convenience
-;; Version: 20130812.1803
-;; X-Original-Version: 0.9.2
-;; Package-Requires: ((s "1.6.0") (dash "1.5.0"))
+;; Version: 20130820.1141
+;; X-Original-Version: 1.0.0-cvs
+;; Package-Requires: ((s "1.6.0") (dash "1.5.0") (pkg-info "0.1"))
 
 ;; This file is NOT part of GNU Emacs.
-
-;;; License:
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -39,28 +37,45 @@
 ;;
 ;;; Code:
 
-;; requires
-(require 'easymenu)
 (require 'thingatpt)
 (require 's)
 (require 'dash)
-(require 'grep)
+(require 'grep)           ; For `rgrep'
+(require 'package)        ; For `package-buffer-info' and `package-version-join'
 
+
+;;; Customization
 (defgroup projectile nil
   "Manage and navigate projects easily."
   :group 'tools
   :group 'convenience)
 
-(defconst projectile-current-version "0.9.3-beta"
-  "The current Projectile version.")
+(defcustom projectile-indexing-method (if (eq system-type 'windows-nt) 'native 'alien)
+  "Specifies the indexing method used by Projectile.
 
-(defcustom projectile-use-native-indexing (eq system-type 'windows-nt)
-  "Use native Emacs Lisp project indexing."
+There are two indexing methods - native and alien.
+
+The native method is implemented in Emacs Lisp (therefore it is
+native to Emacs).  It's advantage is that is portable and will
+work everywhere that Emacs does.  It's disadvantage is that is a
+bit slow (especially for large projects).  Generally it's a good
+idea to pair the native indexing method with caching.
+
+The alien indexing method uses external tools (e.g. git, find,
+etc) to speed up the indexing process.  The disadvantage of this
+method is that it's not well supported on Windows systems.
+
+By default alien indexing is the default on all operating
+systems, except Windows."
   :group 'projectile
-  :type 'boolean)
+  :type 'symbol
+  :options '(native alien))
 
-(defcustom projectile-enable-caching projectile-use-native-indexing
-  "Enable project files caching."
+(defcustom projectile-enable-caching (eq projectile-indexing-method 'native)
+  "When t enables project files caching.
+
+Project caching is automatically enabled by default if you're
+using the native indexing method."
   :group 'projectile
   :type 'boolean)
 
@@ -98,7 +113,6 @@ Otherwise consider the current directory the project root."
   :group 'projectile
   :type 'string)
 
-;; variables
 (defvar projectile-project-root-files
   '(".projectile" "project.clj" ".git" ".hg" ".fslckout" ".bzr" "_darcs"
     "rebar.config" "pom.xml" "build.sbt" "Gemfile" "Makefile")
@@ -118,6 +132,8 @@ Otherwise consider the current directory the project root."
 (defvar projectile-find-dir-hook nil
   "Hooks run when a directory is opened with `projectile-find-dir'.")
 
+
+;;; Serialization
 (defun projectile-serialize (data filename)
   "Serialize DATA to FILENAME.
 
@@ -149,12 +165,49 @@ The list of projects is ordered by the time they have been accessed.")
   :group 'projectile
   :type 'string)
 
-(defun projectile-version ()
-  "Reports the version of Projectile in use."
-  (interactive)
-  (message "Projectile (version %s) 2011-2013 Bozhidar Batsov <bozhidar@batsov.com>"
-           projectile-current-version))
+
+;;; Version information
+(defun projectile-library-version ()
+  "Get the version in the Flycheck library header."
+  (-when-let (version (pkg-info-defining-library-version 'projectile))
+    (pkg-info-format-version version)))
 
+(defun projectile-package-version ()
+  "Get the package version of Projectile.
+
+This is the version number of the installed Projectile package."
+  (-when-let (version (pkg-info-package-version 'flycheck))
+    (pkg-info-format-version version)))
+
+(defun projectile-version (&optional show-version)
+  "Get the Projectile version as string.
+
+If called interactively or if SHOW-VERSION is non-nil, show the
+version in the echo area and the messages buffer.
+
+The returned string includes both, the version from package.el
+and the library version, if both a present and different.
+
+If the version number could not be determined, signal an error,
+if called interactively, or if SHOW-VERSION is non-nil, otherwise
+just return nil."
+  (interactive (list (not (or executing-kbd-macro noninteractive))))
+  (let* ((lib-version (projectile-library-version))
+         (pkg-version (projectile-package-version))
+         (version (cond
+                   ((and lib-version pkg-version
+                         (not (string= lib-version pkg-version)))
+                    (format "%s (package: %s)" lib-version pkg-version))
+                   ((or pkg-version lib-version)
+                    (format "%s" (or pkg-version lib-version))))))
+    (when show-version
+      (unless version
+        (error "Could not find out Projectile version"))
+      (message "Projectile version: %s" version))
+    version))
+
+
+;;; Caching
 (defun projectile-invalidate-cache (arg)
   "Remove the current project's files from `projectile-projects-cache'.
 
@@ -178,6 +231,36 @@ The cache is created both in memory and on the hard drive."
     (puthash project files projectile-projects-cache)
     (projectile-serialize-cache)))
 
+(defun projectile-file-cached-p (file project)
+  "Check if FILE is already in PROJECT cache."
+  (member file (gethash project projectile-projects-cache)))
+
+(defun projectile-cache-current-file ()
+  "Add the currently visited file to the cache."
+  (interactive)
+  (let* ((current-project (projectile-project-root))
+        (current-file (file-relative-name (buffer-file-name (current-buffer)) current-project)))
+    (unless (projectile-file-cached-p current-file current-project)
+      (puthash current-project
+               (cons current-file (gethash current-project projectile-projects-cache))
+               projectile-projects-cache)
+      (projectile-serialize-cache)
+      (message "File %s added to project %s cache." current-file current-project))))
+
+;; cache opened files automatically to reduce the need for cache invalidation
+(defun projectile-cache-files-find-file-hook ()
+  "Function for caching files with `find-file-hook'."
+  (when (and (projectile-project-p) projectile-enable-caching)
+    (projectile-cache-current-file)))
+
+(defun projectile-cache-projects-find-file-hook ()
+  "Function for caching projects with `find-file-hook'."
+  (when (projectile-project-p)
+    (projectile-add-known-project (projectile-project-root))
+    (projectile-save-known-projects)))
+
+
+;;; Project root related utilities
 (defun projectile-project-root ()
   "Retrieves the root directory of a project if available.
 The current directory is assumed to be the project's root otherwise."
@@ -212,6 +295,8 @@ Expand FILE-NAME using `default-directory'."
            (error default-directory))))
    (file-name-nondirectory (directory-file-name project-root))))
 
+
+;;; Project indexing
 (defun projectile-get-project-directories ()
   "Get the list of project directories that are of interest to the user."
   (-map (lambda (subdir) (concat (projectile-project-root) subdir))
@@ -226,7 +311,7 @@ Files are returned as relative paths to the project root."
         (root (projectile-project-root)))
     ;; cache disabled or cache miss
     (or files-list
-        (if projectile-use-native-indexing
+        (if (eq projectile-indexing-method 'native)
             (projectile-dir-files-native root directory)
           ;; use external tools to get the project files
           (projectile-remove-ignored (projectile-dir-files-external root directory))))))
@@ -247,34 +332,6 @@ Files are returned as relative paths to the project root."
                              (s-chop-prefix root (expand-file-name f directory)))
                            (projectile-get-repo-files)))
     files-list))
-
-(defun projectile-file-cached-p (file project)
-  "Check if FILE is already in PROJECT cache."
-  (member file (gethash project projectile-projects-cache)))
-
-(defun projectile-cache-current-file ()
-  "Add the currently visited file to the cache."
-  (interactive)
-  (let* ((current-project (projectile-project-root))
-        (current-file (file-relative-name (buffer-file-name (current-buffer)) current-project)))
-    (unless (projectile-file-cached-p current-file current-project)
-      (puthash current-project
-               (cons current-file (gethash current-project projectile-projects-cache))
-               projectile-projects-cache)
-      (projectile-serialize-cache)
-      (message "File %s added to project %s cache." current-file current-project))))
-
-;; cache opened files automatically to reduce the need for cache invalidation
-(defun projectile-cache-files-find-file-hook ()
-  "Function for caching files with `find-file-hook'."
-  (when (and (projectile-project-p) projectile-enable-caching)
-    (projectile-cache-current-file)))
-
-(defun projectile-cache-projects-find-file-hook ()
-  "Function for caching projects with `find-file-hook'."
-  (when (projectile-project-p)
-    (projectile-add-known-project (projectile-project-root))
-    (projectile-save-known-projects)))
 
 (defcustom projectile-git-command "git ls-files -zco --exclude-standard"
   "Command used by projectile to get the files in a git project."
@@ -562,6 +619,8 @@ https://github.com/d11wtq/grizzl")))
     (maphash (lambda (k v) (setq allkeys (cons k allkeys))) hash)
     allkeys))
 
+
+;;; Interactive commands
 (defun projectile-find-file (arg)
   "Jump to a project's file using completion.
 
@@ -575,7 +634,7 @@ With a prefix ARG invalidates the cache first."
     (run-hooks 'projectile-find-file-hook)))
 
 (defun projectile-find-dir (arg)
-  "Jump to a project's file using completion.
+  "Jump to a project's directory using completion.
 
 With a prefix ARG invalidates the cache first."
   (interactive "P")
@@ -853,7 +912,7 @@ With a prefix ARG invalidates the cache first."
       (projectile-default-compilation-command (projectile-project-type))))
 
 (defun projectile-test-command (project)
-  "Retrieve the compilation command for PROJECT."
+  "Retrieve the test command for PROJECT."
   (or (gethash project projectile-test-cmd-map)
       (projectile-default-test-command (projectile-project-type))))
 
@@ -895,7 +954,9 @@ with a prefix ARG."
       (run-hooks 'projectile-switch-project-hook))))
 
 (defun projectile-find-file-in-directory ()
-  "Switch to a project we have seen before."
+  "Jump to a file in a (maybe regular) directory.
+
+This command will first prompt for the directory the file is in."
   (interactive)
   (let* ((directory (read-directory-name "Find file in directory: "))
          (default-directory directory)
@@ -943,6 +1004,8 @@ Also set `projectile-known-projects'."
   "Save PROJECTILE-KNOWN-PROJECTS to PROJECTILE-KNOWN-PROJECTS-FILE."
   (projectile-serialize projectile-known-projects projectile-known-projects-file))
 
+
+;;; Minor mode
 (defvar projectile-mode-map
   (let ((map (make-sparse-keymap)))
     (let ((prefix-map (make-sparse-keymap)))
@@ -970,38 +1033,35 @@ Also set `projectile-known-projects'."
     map)
   "Keymap for Projectile mode.")
 
-(defun projectile-add-menu ()
-  "Add Projectile's menu under Tools."
-  (easy-menu-add-item nil '("Tools")
-                      '("Projectile"
-                        ["Find file" projectile-find-file]
-                        ["Switch to buffer" projectile-switch-to-buffer]
-                        ["Kill project buffers" projectile-kill-buffers]
-                        ["Recent files" projectile-recentf]
-                        "--"
-                        ["Open project in dired" projectile-dired]
-                        ["Find in project (grep)" projectile-grep]
-                        ["Find in project (ack)" projectile-ack]
-                        ["Replace in project" projectile-replace]
-                        ["Multi-occur in project" projectile-multi-occur]
-                        "--"
-                        ["Invalidate cache" projectile-invalidate-cache]
-                        ["Regenerate etags" projectile-regenerate-tags]
-                        "--"
-                        ["Compile project" projectile-compile-project]
-                        ["Test project" projectile-test-project]
-                        "--"
-                        ["About" projectile-version])
-                      "Search Files (Grep)...")
+(easy-menu-change
+ '("Tools") "Projectile"
+ '(["Find file" projectile-find-file]
+   ["Find test file" projectile-find-test-file]
+   ["Find directory" projectile-find-dir]
+   ["Find file in directory" projectile-find-file-in-directory]
+   ["Switch to buffer" projectile-switch-to-buffer]
+   ["Jump between implementation file and test file" projectile-toggle-between-implemenation-and-test]
+   ["Kill project buffers" projectile-kill-buffers]
+   ["Recent files" projectile-recentf]
+   "--"
+   ["Open project in dired" projectile-dired]
+   ["Switch to project" projectile-switch-project]
+   ["Find in project (grep)" projectile-grep]
+   ["Find in project (ack)" projectile-ack]
+   ["Replace in project" projectile-replace]
+   ["Multi-occur in project" projectile-multi-occur]
+   "--"
+   ["Cache current file" projectile-cache-current-file]
+   ["Invalidate cache" projectile-invalidate-cache]
+   ["Regenerate etags" projectile-regenerate-tags]
+   "--"
+   ["Compile project" projectile-compile-project]
+   ["Test project" projectile-test-project]
+   "--"
+   ["About" projectile-version])
+ "Search Files (Grep)...")
 
-  (easy-menu-add-item nil '("Tools") '("--") "Search Files (Grep)..."))
-
-(defun projectile-remove-menu ()
-  "Remove Projectile's menu."
-  (easy-menu-remove-item nil '("Tools") "Projectile")
-  (easy-menu-remove-item nil '("Tools") "--"))
-
-;;; define minor mode
+(easy-menu-change '("Tools") "--" nil "Search Files (Grep)...")
 
 ;;;###autoload
 (define-minor-mode projectile-mode
@@ -1010,12 +1070,7 @@ Also set `projectile-known-projects'."
 \\{projectile-mode-map}"
   :lighter " Projectile"
   :keymap projectile-mode-map
-  :group 'projectile
-  (if projectile-mode
-      ;; on start
-      (projectile-add-menu)
-    ;; on stop
-    (projectile-remove-menu)))
+  :group 'projectile)
 
 ;;;###autoload
 (define-globalized-minor-mode projectile-global-mode

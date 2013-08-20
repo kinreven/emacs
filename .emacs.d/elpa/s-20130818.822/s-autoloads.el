@@ -1,9 +1,9 @@
-;;; dash-autoloads.el --- automatically extracted autoloads
+;;; s-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil nil ("dash.el") (20979 52607 283566 0))
+;;;### (autoloads nil nil ("s.el") (21011 31961 4827 0))
 
 ;;;***
 
@@ -12,4 +12,4 @@
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
 ;; End:
-;;; dash-autoloads.el ends here
+;;; s-autoloads.el ends here

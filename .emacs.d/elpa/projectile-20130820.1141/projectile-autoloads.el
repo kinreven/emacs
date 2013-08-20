@@ -3,7 +3,7 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "projectile" "projectile.el" (21006 19994 0
+;;;### (autoloads nil "projectile" "projectile.el" (21011 31946 0
 ;;;;;;  0))
 ;;; Generated autoloads from projectile.el
 
@@ -15,7 +15,7 @@ Minor mode to assist project management and navigation.
 \(fn &optional ARG)" t nil)
 
 (defvar projectile-global-mode nil "\
-Non-nil if Projectile-Global mode is enabled.
+Non-nil if Projectile-global mode is enabled.
 See the command `projectile-global-mode' for a description of this minor mode.
 Setting this variable directly does not take effect;
 either customize it (see the info node `Easy Customization')
@@ -25,7 +25,7 @@ or call the function `projectile-global-mode'.")
 
 (autoload 'projectile-global-mode "projectile" "\
 Toggle Projectile mode in all buffers.
-With prefix ARG, enable Projectile-Global mode if ARG is positive;
+With prefix ARG, enable Projectile-global mode if ARG is positive;
 otherwise, disable it.  If called from Lisp, enable the mode if
 ARG is omitted or nil.
 
