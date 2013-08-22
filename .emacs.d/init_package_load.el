@@ -16,6 +16,7 @@
 (ido-ubiquitous-mode 1)
 (ido-everywhere 1)
 (flx-ido-mode 1)
+(setq flx-ido-threshhold 8000)
 
 ;; Smex
 (require 'smex)
