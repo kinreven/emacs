@@ -39,8 +39,6 @@
 (global-set-key (kbd "C-;") 'ascope-find-this-symbol)
 (global-set-key (kbd "C-c i") 'ascope-init)
 (global-set-key (kbd "C-c I") 'ascope-reinit)
-(global-set-key (kbd "C-c p") 'ascope-prev-symbol)
-(global-set-key (kbd "C-c n") 'ascope-next-symbol)
 
 ;; Files
 (global-set-key (kbd "C-x f") 'ido-find-file)
