@@ -1,5 +1,5 @@
 ;;; ascope.el --- Another cscope interface for emacs
-;; Version: 20130824.1125
+;; Version: 20130328.1110
 ;; Wrtitten by Staton Sun
 ;; my email address is sunnycamel@gmail.com
 ;;
@@ -8,7 +8,7 @@
 ;; Because xcscope.el open a new process of "cscope -L" for each a
 ;; definition, it's wasting time for reloading cscope and reopening
 ;; database.
-;;Another cscope interface called bscope can get the WikiModes result quick but it is weak in the presentation of WikiModes result. 
+;;Another cscope interface called bscope can get the search result quick but it is weak in the presentation of search result. 
 ;;This script merge the xcscope.el and bscope.el together make it fast and versatile
 
 ;; Usage:
@@ -25,7 +25,7 @@
 ;; M-x ascope-pop-mark
 
 
-;;run next commands in the WikiModes result buffer (*Result)
+;;run next commands in the search result buffer (*Result)
 ;;ascope-next-symbol this command is bind to key "n"
 ;;ascope-prev-symbol this command is bind to key "p"
 ;;ascope-select-entry-other-window-delete-window this command is bind to key "enter"
@@ -33,7 +33,7 @@
 
 (defgroup ascope nil
 "Cscope interface for (X)Emacs.
-Using cscope, you can easily WikiModes for where symbols are used and defined.
+Using cscope, you can easily search for where symbols are used and defined.
 It is designed to answer questions like:
 
 Where is this variable used?
@@ -139,7 +139,7 @@ Must end with a newline.")
 (make-variable-frame-local 'ascope-last-file)
 
 (defvar ascope-list-entry-keymap nil
-"The keymap used in the *Result* buffer which lists WikiModes results.")
+"The keymap used in the *Result* buffer which lists search results.")
 (if ascope-list-entry-keymap
 nil
 (setq ascope-list-entry-keymap (make-keymap))
@@ -170,6 +170,28 @@ nil
   (if (get-process "ascope") (kill-process (get-process "ascope")))
   (if (get-buffer "*ascope*") (kill-buffer (get-buffer "*ascope*")))
   (setq default-directory dir)
+  (start-process "ascope" "*ascope*" "cscope" "-ld" "-f" "cscope.out")
+  (set-process-filter (get-process "ascope") 'ascope-filter)
+  (with-current-buffer "*ascope*"
+    (accept-process-output (get-process "ascope") 3)
+    (if (looking-at ".*cannot open.*cscope\.out.*")
+	(progn
+	  (setq buf (get-buffer "*ascope*"))
+	  (if buf
+	      (kill-buffer buf))
+	  (message "ascope: no cscope.out file here"))
+      (progn
+	(ascope-wait-for-output)
+	(message "ascope: load ok"))
+      ))
+  )
+
+(defun ascope-reinit (dir)
+  (interactive "DCscope Initial Directory: ")
+  (if (get-process "ascope") (kill-process (get-process "ascope")))
+  (if (get-buffer "*ascope*") (kill-buffer (get-buffer "*ascope*")))
+  (setq default-directory dir)
+  (call-process "cscope-indexer")
   (start-process "ascope" "*ascope*" "cscope" "-ld" "-f" "cscope.out")
   (set-process-filter (get-process "ascope") 'ascope-filter)
   (with-current-buffer "*ascope*"
@@ -311,12 +333,12 @@ overlay-arrow-string nil)
 (defun ascope-next-symbol ()
 "Move to the next symbol in the *ascope* buffer."
 (interactive)
-(ascope-buffer-WikiModes t t))
+(ascope-buffer-search t t))
 
 (defun ascope-prev-symbol ()
 "Move to the previous symbol in the *ascope* buffer."
 (interactive)
-(ascope-buffer-WikiModes t nil))
+(ascope-buffer-search t nil))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun ascope-show-entry-internal (file line-number
@@ -345,7 +367,7 @@ line-end line-length)
 (set-marker overlay-arrow-position (point))
 (set-marker overlay-arrow-position nil))
 (if ascope-marker
-(progn ;; The WikiModes was successful. Save the marker so it
+(progn ;; The search was successful. Save the marker so it
 ;; can be returned to by ascope-pop-mark.
 (ring-insert ascope-marker-ring ascope-marker)
 (setq ascope-marker nil)))
@@ -355,11 +377,11 @@ line-end line-length)
 ))))
 
 
-(defun ascope-buffer-WikiModes (do-symbol do-next)
+(defun ascope-buffer-search (do-symbol do-next)
 "The body of the following four functions."
 (let* (line-number old-point point
-(WikiModes-file (not do-symbol))
-(WikiModes-prev (not do-next))
+(search-file (not do-symbol))
+(search-prev (not do-next))
 (direction (if do-next 1 -1))
 (old-buffer (current-buffer))
 (old-buffer-window (get-buffer-window old-buffer))
@@ -375,7 +397,7 @@ line-end line-length)
 (forward-line direction)
 (setq point (point))
 (if (or (and do-next (>= point (point-max)))
-(and WikiModes-prev (<= point (point-min))))
+(and search-prev (<= point (point-min))))
 (progn
 (goto-char old-point)
 (error "The %s of the *cscope* buffer has been reached"
@@ -443,7 +465,7 @@ dir
 (pop-to-buffer outbuf)
 (shrink-window 5)
 (insert ascope-separator-line "\n")
-(insert "WikiModes complete.")
+(insert "Search complete.")
 (if ascope-first-match
 (set-window-point (get-buffer-window outbuf) ascope-first-match-point)
 (insert "\nNothing found!"))
