@@ -37,8 +37,14 @@
 (global-set-key (kbd "C-,") 'ascope-pop-mark)
 (global-set-key (kbd "C-'") 'ascope-find-this-text-string)
 (global-set-key (kbd "C-;") 'ascope-find-this-symbol)
-(global-set-key (kbd "C-c i") 'ascope-init)
-(global-set-key (kbd "C-c I") 'ascope-reinit)
+(global-set-key (kbd "C-c l") 'ascope-init)
+(global-set-key (kbd "C-c i") 'ascope-reinit)
+
+;; Window layout 
+(setq winner-dont-bind-my-keys t) 
+(winner-mode t) 
+(global-set-key (kbd "C-c u") 'winner-undo) 
+(global-set-key (kbd "C-c r") 'winner-redo)
 
 ;; Files
 (global-set-key (kbd "C-x f") 'ido-find-file)
@@ -59,52 +65,17 @@
 (if arg
 (scroll-down arg)
 (scroll-down 3)))
-(global-set-key (kbd "M-n") 'window-move-up)   
+(global-set-key (kbd "M-n") 'window-move-up)
 (global-set-key (kbd "M-p") 'window-move-down)
 
-;; Window layout 
-(setq winner-dont-bind-my-keys t) 
-(winner-mode t) 
-(global-set-key (kbd "C-c u") 'winner-undo) 
-(global-set-key (kbd "C-c r") 'winner-redo)
-
 ;; Movement
-(keyboard-translate ?\C-i ?\H-i)
-(keyboard-translate ?\C-m ?\H-m): 
-(global-set-key [?\H-m] 'set-mark-command)
-(global-set-key [?\H-i] (kbd "C-p"))
-
-(global-set-key (kbd "M-m") (kbd "C-@"))     
-(global-set-key (kbd "C-k") (kbd "C-n"))
-(global-set-key (kbd "C-j") (kbd "C-b"))
-(global-set-key (kbd "C-l") (kbd "C-f"))
-(global-set-key (kbd "M-j") (kbd "M-b"))
-(global-set-key (kbd "M-l") (kbd "M-f"))
-(global-set-key (kbd "M-i") (kbd "M-{"))
-(global-set-key (kbd "M-k") (kbd "M-}"))
-(global-set-key (kbd "C-M-i") (kbd "C-M-a"))
-(global-set-key (kbd "C-M-k") (kbd "C-M-e"))
-(global-set-key (kbd "C-M-j") (kbd "C-M-b"))
-(global-set-key (kbd "C-M-l") (kbd "C-M-f"))
+(global-set-key (kbd "C-l") 'set-mark-command)
+(global-set-key (kbd "M-l") 'set-mark-command)
 
 ;; Delete with H
-(setq help-char (string-to-char "<f1>"))                      ;; Bind ONLY F1 to help, not C-h
-(define-key input-decode-map (kbd "C-h") (kbd "DEL"))         ;; Translate C-h to DEL ;; FIXME:  Should be in emacs 22, doens't work.
-(define-key input-decode-map (kbd "M-h") (kbd "M-<DEL>"))     ;; Translate M-h to M-DEL
-
-;; Function key
-(global-set-key [f5] (lambda () (interactive) (eshell t)))
-(global-set-key [f6] (lambda () (interactive) (serial-term "/dev/ttyS0" 0)))
-(add-hook 'term-mode-hook (lambda () (interactive) (yas-minor-mode -1)))
-
-;; Mark region
-(defun mark-current-line ()
-  "Mark the current line"
-  (interactive)
-  (end-of-line) ; move to end of line
-  (set-mark (line-beginning-position)))
-(global-set-key (kbd "C-x l") 'mark-current-line)
-(global-set-key (kbd "C-x h") 'mark-whole-buffer)
+(setq help-char (string-to-char "<f1>"))
+(define-key input-decode-map (kbd "C-h") (kbd "DEL"))
+(define-key input-decode-map (kbd "M-h") (kbd "M-<DEL>"))
 
 ;; Transpose
 (global-set-key (kbd "C-t") 'transpose-lines)
@@ -113,5 +84,15 @@
 ;; Goto line
 (global-set-key (kbd "M-g") 'goto-line)
 
+;; Default Regexp
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "M-%") 'query-replace-regexp)
+
 ;; Window switch
 (global-set-key [C-tab] 'other-window)
+
+;; Function key
+(global-set-key [f5] (lambda () (interactive) (eshell t)))
+(global-set-key [f6] (lambda () (interactive) (serial-term "/dev/ttyS0" 0)))
+(add-hook 'term-mode-hook (lambda () (interactive) (yas-minor-mode -1)))

@@ -505,12 +505,12 @@
 			(24)))
 		      "Tern Completion by auto-complete.el [github]" single])
  (tern .
-       [(20130805 1824)
+       [(20130823 1434)
 	((json
 	  (1 2))
 	 (emacs
 	  (24)))
-	"Tern-powered JavaScript integration [github]" tar])
+	"Tern-powered JavaScript integration [github]" single])
  (tea-time .
 	   [(20120307 1523)
 	    nil "Simple timer package, useful to make perfect tea. [github]" single])
@@ -1511,7 +1511,7 @@
 		(0 3 0)))
 	      "Org minor mode to synchronize with trello [github]" tar])
  (org-toodledo .
-	       [(20130608 1434)
+	       [(20130823 1051)
 		nil "Toodledo integration for Emacs Org mode [github]" tar])
  (org-screenshot .
 		 [(20130822 22)
@@ -1629,7 +1629,7 @@
 		 [(20130131 720)
 		  nil "Open a junk (memo) file to try-and-error [wiki]" single])
  (omnisharp .
-	    [(20130822 2312)
+	    [(20130823 2334)
 	     ((json
 	       (1 2))
 	      (dash
@@ -1784,7 +1784,7 @@
 	      [(20090804 2252)
 	       nil "Major mode to edit muttrc under Emacs [wiki]" single])
  (mustang-theme .
-		[(20130822 1852)
+		[(20130823 1804)
 		 nil "port of vim's mustang theme [github]" single])
  (mustache-mode .
 		[(20110927 1253)
@@ -2031,7 +2031,7 @@
 			       [(20130730 1032)
 				nil "Advice for magit-log-edit-commit [github]" single])
  (magit .
-	[(20130822 1825)
+	[(20130824 24)
 	 ((cl-lib
 	   (0 3))
 	  (git-commit-mode
@@ -2234,7 +2234,7 @@
 		  (0 2)))
 		"keymap utilities [github]" single])
  (keyfreq .
-	  [(20130404 2117)
+	  [(20130822 1639)
 	   nil "track command frequencies [github]" single])
  (keydef .
 	 [(20090428 2131)
@@ -2373,6 +2373,9 @@
  (instapaper .
 	     [(20130104 2221)
 	      nil "add URLs to instapaper from emacs [hg]" single])
+ (insert-shebang .
+		 [(20130823 1147)
+		  nil "Inserts shebang line automatically [github]" tar])
  (inlineR .
 	  [(20120520 2332)
 	   nil "insert Tag for inline image of R graphics [github]" single])
@@ -2741,7 +2744,7 @@
 	    (20120509)))
 	  "helm-sources and some utilities for GNU R. [github]" single])
  (helm .
-       [(20130823 913)
+       [(20130823 1456)
 	nil "Helm is an Emacs incremental and narrowing framework [github]" tar])
  (header2 .
 	  [(20130723 2321)
@@ -2960,7 +2963,7 @@
 	   [(20130130 2150)
 	    nil "Context-aware git commands such as branch handling [wiki]" single])
  (git-commit-mode .
-		  [(20130822 1954)
+		  [(20130824 18)
 		   nil "Major mode for editing git commit messages [github]" single])
  (git-blame .
 	    [(20110509 1226)
@@ -3400,7 +3403,7 @@
 		 (0)))
 	       "let there be <leader> [github]" single])
  (evil .
-       [(20130816 2200)
+       [(20130823 2209)
 	((undo-tree
 	  (0 6 3)))
 	"Extensible Vi layer for Emacs. [git]" tar])
@@ -4049,7 +4052,7 @@
 	  [(20130817 1552)
 	   nil "Modular in-buffer completion framework [github]" tar])
  (commander .
-	    [(20130821 2324)
+	    [(20130823 1021)
 	     ((s
 	       (1 6 0))
 	      (dash
@@ -4126,7 +4129,7 @@
 	       [(20130820 1515)
 		nil "Major mode for Clojure code [github]" single])
  (clojure-cheatsheet .
-		     [(20130819 1113)
+		     [(20130823 1715)
 		      ((helm
 			(1 5 3))
 		       (nrepl

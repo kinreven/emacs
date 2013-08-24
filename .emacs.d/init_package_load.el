@@ -88,3 +88,7 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (setq markdown-command "cd ~/.emacs.d/ && pandoc -s -S -f markdown -t html -H github.css")
 
+;; VIM
+(require 'evil)
+(evil-mode 1)
+(setq evil-default-state 'emacs)
