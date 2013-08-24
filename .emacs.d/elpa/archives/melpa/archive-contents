@@ -1784,7 +1784,7 @@
 	      [(20090804 2252)
 	       nil "Major mode to edit muttrc under Emacs [wiki]" single])
  (mustang-theme .
-		[(20130823 1804)
+		[(20130824 819)
 		 nil "port of vim's mustang theme [github]" single])
  (mustache-mode .
 		[(20110927 1253)
@@ -1805,7 +1805,7 @@
 	     [(20130615 2249)
 	      nil "View and edit parts of multiple files in one buffer [github]" single])
  (multi-web-mode .
-		 [(20130205 2044)
+		 [(20130824 54)
 		  nil "multiple major mode support for web editing [github]" tar])
  (multi-term .
 	     [(20130108 2305)
@@ -1990,7 +1990,7 @@
 		      (0 1 1)))
 		    "Yasnippets for Mallard [github]" tar])
  (mallard-mode .
-	       [(20130823 526)
+	       [(20130824 417)
 		nil "Major mode for editing Mallard files [github]" tar])
  (main-line .
 	    [(20130405 1304)
@@ -2116,7 +2116,7 @@
 		[(20130410 549)
 		 nil "relative file load (within a multi-file Emacs package) [github]" single])
  (livescript-mode .
-		  [(20130724 1248)
+		  [(20130824 1402)
 		   nil "Major mode for editing LiveScript files [github]" single])
  (lively .
 	 [(20120728 1413)
@@ -2744,7 +2744,7 @@
 	    (20120509)))
 	  "helm-sources and some utilities for GNU R. [github]" single])
  (helm .
-       [(20130823 1456)
+       [(20130824 832)
 	nil "Helm is an Emacs incremental and narrowing framework [github]" tar])
  (header2 .
 	  [(20130723 2321)

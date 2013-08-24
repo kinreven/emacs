@@ -68,9 +68,17 @@
 (global-set-key (kbd "M-n") 'window-move-up)
 (global-set-key (kbd "M-p") 'window-move-down)
 
-;; Movement
+;; Set Mark
 (global-set-key (kbd "C-l") 'set-mark-command)
 (global-set-key (kbd "M-l") 'set-mark-command)
+;; Mark region
+(defun mark-current-line ()
+  "Select the current line"
+  (interactive)
+  (end-of-line)
+  (set-mark (line-beginning-position)))
+(global-set-key (kbd "C-x l") 'mark-current-line)
+(global-set-key (kbd "C-M-l") 'mark-paragraph)
 
 ;; Delete with H
 (setq help-char (string-to-char "<f1>"))
@@ -88,6 +96,9 @@
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "M-%") 'query-replace-regexp)
+
+;; Align your code in a pretty way.
+(global-set-key (kbd "C-x \\") 'align-regexp)
 
 ;; Window switch
 (global-set-key [C-tab] 'other-window)

@@ -1,4 +1,5 @@
 ;; Global mode enable
+(delete-selection-mode t)
 (auto-compression-mode 1)
 (global-visual-line-mode 1)
 ;(global-hl-line-mode 1)

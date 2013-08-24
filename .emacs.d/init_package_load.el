@@ -28,6 +28,7 @@
 ;; Dired extra
 (require 'dired+)
 (toggle-diredp-find-file-reuse-dir 1)
+(require 'dired-x)
 
 ;; Smartparens
 (require 'smartparens-config)
@@ -92,3 +93,9 @@
 (require 'evil)
 (evil-mode 1)
 (setq evil-default-state 'emacs)
+
+;; Diminish
+(require 'diminish)
+(diminish 'abbrev-mode "Abv")
+(diminish 'projectile-mode "Proj")
+(diminish 'undo-tree-mode )
