@@ -3,8 +3,8 @@
 ;; Copyright (C) 2012 Magnar Sveen
 
 ;; Author: Magnar Sveen <magnars@gmail.com>
-;; Version: 20130820.1601
-;; X-Original-Version: 1.6.2
+;; Version: 20130824.2225
+;; X-Original-Version: 1.7.0
 ;; Keywords: strings
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -405,10 +405,10 @@ When START is non-nil the search will start at that index."
 (defun s-split-words (s)
   "Split S into list of words."
   (s-split
-   "[^[:lower:][:upper:]0-9]+"
+   "[^[:word:]0-9]+"
    (let ((case-fold-search nil))
      (replace-regexp-in-string
-      "\\([[:lower:]]\\)\\([[:upper:]]\\)" "\\1 \\2" 
+      "\\([[:lower:]]\\)\\([[:upper:]]\\)" "\\1 \\2"
       (replace-regexp-in-string "\\([[:upper:]]\\)\\([[:upper:]][0-9[:lower:]]\\)" "\\1 \\2" s)))
    t))
 
@@ -442,6 +442,10 @@ When START is non-nil the search will start at that index."
   "Convert S to Titleized Words."
   (s-join " " (mapcar 's-titleize (s-split-words s))))
 
+(defun s-word-initials (s)
+  "Convert S to its initials."
+  (s-join "" (mapcar (lambda (ss) (substring ss 0 1))
+                     (s-split-words s))))
 
 ;; Errors for s-format
 (progn

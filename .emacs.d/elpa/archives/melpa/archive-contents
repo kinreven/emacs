@@ -442,7 +442,7 @@
 	    [(20130302 748)
 	     nil "Mojor mode for editing TOML files [github]" single])
  (tomatinho .
-	    [(20120717 2026)
+	    [(20130824 1343)
 	     nil "Tomatinho [github]" tar])
  (todotxt .
 	  [(20130527 851)
@@ -969,7 +969,7 @@
 	      (0 0 3)))
 	    "s operations for buffers [github]" single])
  (s .
-    [(20130820 1601)
+    [(20130824 2225)
      nil "The long lost Emacs string manipulation library. [github]" single])
  (rvm .
       [(20130521 902)
@@ -1494,7 +1494,7 @@
 	      (0 1)))
 	    "Blog from Org mode to wordpress [github]" tar])
  (org-trello .
-	     [(20130823 951)
+	     [(20130824 1838)
 	      ((org
 		(8 0 7))
 	       (dash
@@ -1799,7 +1799,7 @@
 	      (1 2 0)))
 	    "a mustache templating library in emacs lisp [github]" tar])
  (multiple-cursors .
-		   [(20130821 1255)
+		   [(20130824 2039)
 		    nil "Multiple cursors for Emacs. [github]" tar])
  (multifiles .
 	     [(20130615 2249)
@@ -2252,17 +2252,17 @@
 	 [(20130516 1856)
 	  nil "Parse org-todo headlines to use org-tables as Kanban tables [hg]" single])
  (kaesar-mode .
-	      [(20130823 935)
+	      [(20130824 2251)
 	       ((kaesar
 		 (0 1 0)))
 	       "Encrypt/Decrypt string with password. [github]" single])
  (kaesar-file .
-	      [(20130823 935)
+	      [(20130824 2251)
 	       ((kaesar
 		 (0 1 0)))
 	       "Encrypt/Decrypt file with password. [github]" single])
  (kaesar .
-	 [(20130823 1909)
+	 [(20130824 2251)
 	  nil "Another AES encryptin/decryptin. (string with password) [github]" single])
  (jump-to-line .
 	       [(20130123 153)
@@ -2387,7 +2387,7 @@
 	     [(20130104 2221)
 	      nil "add URLs to instapaper from emacs [hg]" single])
  (insert-shebang .
-		 [(20130823 1147)
+		 [(20130825 106)
 		  nil "Inserts shebang line automatically [github]" tar])
  (inlineR .
 	  [(20120520 2332)
@@ -4007,7 +4007,7 @@
 	   [(20130424 1528)
 	    nil "Major mode for editing comma/char separated values [github]" single])
  (csharp-mode .
-	      [(20130824 1125)
+	      [(20130824 1200)
 	       nil "C# mode derived mode [wiki]" single])
  (cryptol-mode .
 	       [(20130406 2043)
@@ -4252,7 +4252,7 @@
 	      [(20110305 249)
 	       nil "Swap buffers without typing C-x b on each window [wiki]" single])
  (bs-ext .
-	 [(20130824 1125)
+	 [(20130824 1159)
 	  nil "Extensions to emacs buffer-selection library (bs.el) [wiki]" single])
  (browse-url-dwim .
 		  [(20121205 1453)
@@ -4266,13 +4266,13 @@
 	   [(20081011 2126)
 	    nil "Quote text with a semi-box. [github]" single])
  (bookmark+ .
-	    [(20130824 1125)
+	    [(20130824 1207)
 	     nil "Bookmark+: extensions to standard library `bookmark.el'. [wiki]" tar])
  (bm .
      [(20121212 2224)
       nil "Visible bookmarks in buffer. [github]" single])
  (blank-mode .
-	     [(20130824 1125)
+	     [(20130824 1159)
 	      nil "minor mode to visualize TAB, (HARD) SPACE, NEWLINE [wiki]" single])
  (bitly .
 	[(20130503 1049)
@@ -4325,7 +4325,7 @@
 	      [(20130227 1437)
 	       nil "Major mode for writing BBCode markup [github]" single])
  (batch-mode .
-	     [(20130824 1125)
+	     [(20130824 1158)
 	      nil "major mode for editing ESRI batch scrips [wiki]" single])
  (bash-completion .
 		  [(20130526 544)
@@ -4356,7 +4356,7 @@
 		 (0 2 3)))
 	       "Visual navigation through mark rings [github]" single])
  (awk-it .
-	 [(20130824 1125)
+	 [(20130824 1159)
 	  nil "Run AWK interactively on region! [wiki]" single])
  (autopair .
 	   [(20121123 1829)
@@ -4377,7 +4377,7 @@
 			     [(20130605 2340)
 			      nil "Automatically save buffers in a decent way [github]" single])
  (auto-install .
-	       [(20130824 1125)
+	       [(20130824 1206)
 		nil "Auto install elisp file [wiki]" single])
  (auto-indent-mode .
 		   [(20130816 935)
@@ -4407,7 +4407,7 @@
 		  (0 3 4)))
 		"automatically compile Emacs Lisp libraries [github]" single])
  (auto-capitalize .
-		  [(20130824 1125)
+		  [(20130824 1157)
 		   nil "Automatically capitalize (or upcase) words [wiki]" single])
  (auto-auto-indent .
 		   [(20130531 1903)
@@ -4415,7 +4415,7 @@
 		      (0 1)))
 		    "Indents code as you type [github]" single])
  (auto-async-byte-compile .
-			  [(20130824 1125)
+			  [(20130824 1158)
 			   nil "Automatically byte-compile when saved [wiki]" single])
  (audio-notes-mode .
 		   [(20130817 2251)
@@ -4430,13 +4430,13 @@
 	[(20130716 1449)
 	 nil "Asynchronous processing in Emacs [github]" tar])
  (ascope .
-	 [(20130824 1125)
+	 [(20130824 1158)
 	  nil "Another cscope interface for emacs [wiki]" single])
  (ascii .
-	[(20130824 1125)
+	[(20130824 1200)
 	 nil "ASCII code display. [wiki]" single])
  (archive-region .
-		 [(20130824 1125)
+		 [(20130824 1207)
 		  nil "Move region to archive file instead of killing [wiki]" single])
  (apt-utils-ido .
 		[(20130527 2145)
@@ -4444,7 +4444,7 @@
 		   (1 212)))
 		 "Ido commands for apt-utils [github]" single])
  (apt-utils .
-	    [(20130824 1125)
+	    [(20130824 1200)
 	     nil "Emacs interface to APT (Debian package management) [wiki]" single])
  (applescript-mode .
 		   [(20090320 2332)
@@ -4472,7 +4472,7 @@
 		     [(20130716 24)
 		      nil "Low-contrast Zenburn-inverted theme [github]" single])
  (ansi .
-       [(20130816 2156)
+       [(20130824 1655)
 	((s
 	  (1 6 1))
 	 (dash
@@ -4503,7 +4503,7 @@
 		 (6 6 5)))
 	       "Calm Dark Theme for Emacs [github]" single])
  (all-ext .
-	  [(20130824 1125)
+	  [(20130824 1206)
 	   ((all
 	     (1 0)))
 	   "Extension of M-x all [wiki]" single])
