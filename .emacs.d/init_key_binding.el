@@ -46,6 +46,10 @@
 (global-set-key (kbd "C-c u") 'winner-undo) 
 (global-set-key (kbd "C-c r") 'winner-redo)
 
+;; Magit
+(global-set-key (kbd "C-c v") 'magit-status)
+(global-set-key (kbd "C-c h") 'magit-log)
+
 ;; Files
 (global-set-key (kbd "C-x f") 'ido-find-file)
 (global-set-key (kbd "C-x s") 'save-buffer)
@@ -96,12 +100,10 @@
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "M-%") 'query-replace-regexp)
+(define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
 
 ;; Align your code in a pretty way.
 (global-set-key (kbd "C-x \\") 'align-regexp)
-
-;; Window switch
-(global-set-key [C-tab] 'other-window)
 
 ;; Function key
 (global-set-key [f5] (lambda () (interactive) (eshell t)))

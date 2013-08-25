@@ -5,10 +5,12 @@
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(line-number-mode t)
+ '(use-file-dialog nil)
+ '(use-dialog-box nil)
+ '(inhibit-startup-screen t)
  '(inhibit-startup-message t)
  '(show-paren-mode t)
  '(current-language-environment "UTF-8")
- '(ecb-options-version "2.40")
  '(tool-bar-mode nil)
  '(tooltip-mode nil)
  '(menu-bar-mode nil)

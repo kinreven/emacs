@@ -12,11 +12,15 @@
 (require 'ido)
 (require 'ido-ubiquitous)
 (require 'flx-ido)
+(setq ido-enable-flex-matching t)
+(setq ido-use-filename-at-point nil)
+(setq ido-auto-merge-work-directories-length 0)
+(setq ido-use-virtual-buffers t)
+(setq ido-default-buffer-method 'selected-window)
 (ido-mode 1)
-(ido-ubiquitous-mode 1)
 (ido-everywhere 1)
+(ido-ubiquitous-mode 1)
 (flx-ido-mode 1)
-(setq flx-ido-threshhold 8000)
 
 ;; Smex
 (require 'smex)
@@ -27,6 +31,8 @@
 
 ;; Dired extra
 (require 'dired+)
+(setq diredp-hide-details-initially-flag nil)
+(setq global-dired-hide-details-mode -1)
 (toggle-diredp-find-file-reuse-dir 1)
 (require 'dired-x)
 
@@ -39,6 +45,13 @@
 ;; Windows number
 (require 'window-number)
 (window-number-meta-mode 1)
+
+;; Switch windows
+(require 'switch-window)
+(setq switch-window-shortcut-style 'alphabet)
+
+;; Magit
+(require 'magit)
 
 ;; Scope
 (require 'ascope)
