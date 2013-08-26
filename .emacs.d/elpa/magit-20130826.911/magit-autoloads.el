@@ -3,7 +3,7 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "magit" "magit.el" (21017 30935 0 0))
+;;;### (autoloads nil "magit" "magit.el" (21019 23676 0 0))
 ;;; Generated autoloads from magit.el
 
 (autoload 'magit-status "magit" "\
@@ -20,7 +20,7 @@ when asking for user input.
 
 ;;;***
 
-;;;### (autoloads nil "magit-blame" "magit-blame.el" (21017 30935
+;;;### (autoloads nil "magit-blame" "magit-blame.el" (21019 23676
 ;;;;;;  0 0))
 ;;; Generated autoloads from magit-blame.el
 
@@ -31,7 +31,7 @@ Display blame information inline.
 
 ;;;***
 
-;;;### (autoloads nil "magit-flow" "magit-flow.el" (21017 30935 0
+;;;### (autoloads nil "magit-flow" "magit-flow.el" (21019 23676 0
 ;;;;;;  0))
 ;;; Generated autoloads from magit-flow.el
 
@@ -47,7 +47,7 @@ Unconditionally turn on `magit-flow-mode'.
 
 ;;;***
 
-;;;### (autoloads nil "magit-stgit" "magit-stgit.el" (21017 30935
+;;;### (autoloads nil "magit-stgit" "magit-stgit.el" (21019 23676
 ;;;;;;  0 0))
 ;;; Generated autoloads from magit-stgit.el
 
@@ -63,7 +63,7 @@ Unconditionally turn on `magit-stgit-mode'.
 
 ;;;***
 
-;;;### (autoloads nil "magit-svn" "magit-svn.el" (21017 30935 0 0))
+;;;### (autoloads nil "magit-svn" "magit-svn.el" (21019 23676 0 0))
 ;;; Generated autoloads from magit-svn.el
 
 (autoload 'magit-svn-mode "magit-svn" "\
@@ -78,7 +78,7 @@ Unconditionally turn on `magit-svn-mode'.
 
 ;;;***
 
-;;;### (autoloads nil "magit-topgit" "magit-topgit.el" (21017 30935
+;;;### (autoloads nil "magit-topgit" "magit-topgit.el" (21019 23676
 ;;;;;;  0 0))
 ;;; Generated autoloads from magit-topgit.el
 
@@ -94,7 +94,7 @@ Unconditionally turn on `magit-topgit-mode'.
 
 ;;;***
 
-;;;### (autoloads nil "magit-wip" "magit-wip.el" (21017 30935 0 0))
+;;;### (autoloads nil "magit-wip" "magit-wip.el" (21019 23676 0 0))
 ;;; Generated autoloads from magit-wip.el
 
 (defvar magit-wip-mode nil "\
@@ -144,7 +144,7 @@ See `magit-wip-save-mode' for more information on Magit-wip-save mode.
 ;;;***
 
 ;;;### (autoloads nil nil ("magit-bisect.el" "magit-cherry.el" "magit-compat.el"
-;;;;;;  "magit-key-mode.el" "magit-pkg.el") (21017 30935 196918 0))
+;;;;;;  "magit-key-mode.el" "magit-pkg.el") (21019 23676 793261 0))
 
 ;;;***
 

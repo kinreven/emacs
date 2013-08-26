@@ -15,7 +15,7 @@
 (setq ido-enable-flex-matching t)
 (setq ido-use-filename-at-point nil)
 (setq ido-auto-merge-work-directories-length 0)
-(setq ido-use-virtual-buffers t)
+;(setq ido-use-virtual-buffers t)
 (setq ido-default-buffer-method 'selected-window)
 (ido-mode 1)
 (ido-everywhere 1)
@@ -50,8 +50,12 @@
 (require 'switch-window)
 (setq switch-window-shortcut-style 'alphabet)
 
+;; SCV 
+(setq vc-handled-backends nil) 
 ;; Magit
 (require 'magit)
+;; Psvn
+(require 'psvn)
 
 ;; Scope
 (require 'ascope)

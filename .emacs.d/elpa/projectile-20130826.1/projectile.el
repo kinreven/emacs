@@ -5,7 +5,7 @@
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/projectile
 ;; Keywords: project, convenience
-;; Version: 20130820.1629
+;; Version: 20130826.1
 ;; X-Original-Version: 1.0.0-cvs
 ;; Package-Requires: ((s "1.6.0") (dash "1.5.0") (pkg-info "0.1"))
 
@@ -169,14 +169,14 @@ The list of projects is ordered by the time they have been accessed.")
 ;;; Version information
 (defun projectile-library-version ()
   "Get the version in the Projectile library header."
-  (-when-let (version (pkg-info-defining-library-version 'projectile))
+  (-when-let (version (pkg-info-defining-library-version 'projectile-mode))
     (pkg-info-format-version version)))
 
 (defun projectile-package-version ()
   "Get the package version of Projectile.
 
 This is the version number of the installed Projectile package."
-  (-when-let (version (pkg-info-package-version 'flycheck))
+  (-when-let (version (pkg-info-package-version 'projectile))
     (pkg-info-format-version version)))
 
 (defun projectile-version (&optional show-version)

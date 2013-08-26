@@ -1198,17 +1198,17 @@ server if necessary."
                      ;; Tell Emacsclient to use this server,
                      ;; if necessary and possible.
                      (unless (or (equal server-name "server")
-                                 (eq system-type 'windows-nt))
-                       (concat "--socket-name="
-                               (ignore-errors
-                                 (file-name-as-directory
-                                  server-socket-dir))
-                               server-name))))
+                                 (eq system-type 'windows-nt)
+                                 server-use-tcp)
+                       (concat " --socket-name="
+                               (expand-file-name server-name
+                                                 server-socket-dir)))))
+     (when server-use-tcp
+       (setenv "EMACS_SERVER_FILE"
+               (expand-file-name server-name server-auth-dir)))
      ;; As last resort fallback to a new Emacs instance.
      (setenv "ALTERNATE_EDITOR"
-             (or (ignore-errors
-                   (cdr (assq 'args (process-attributes (emacs-pid)))))
-                 "emacs"))
+             (expand-file-name invocation-name invocation-directory))
      ;; Git has to be called asynchronously in BODY or we create a
      ;; dead lock.  By the time Emacsclient is called the dynamic
      ;; binding is no longer in effect and our primitives don't
@@ -2871,7 +2871,7 @@ few sanity checks."
                ;; Don't revert indirect buffers, as the parent would be
                ;; reverted.
                (not (buffer-base-buffer))
-               (not (verify-visited-file-modtime))
+               (not (verify-visited-file-modtime (current-buffer)))
                (file-readable-p (buffer-file-name)))
       (revert-buffer t t nil))))
 
@@ -5460,7 +5460,10 @@ With a prefix argument amend to the commit at HEAD instead.
     (require 'git-commit-mode)
     (let ((topdir (magit-get-top-dir)))
       (with-current-buffer
-          (find-file-noselect (magit-git-dir "COMMIT_EDITMSG"))
+          (find-file-noselect
+           (magit-git-dir (if (equal subcmd "tag")
+                              "TAG_EDITMSG"
+                            "COMMIT_EDITMSG")))
         (funcall (if (functionp magit-server-window-for-commit)
                      magit-server-window-for-commit
                    'switch-to-buffer)
