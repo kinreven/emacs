@@ -46,10 +46,6 @@
 (global-set-key (kbd "C-c u") 'winner-undo) 
 (global-set-key (kbd "C-c r") 'winner-redo)
 
-;; Magit
-(global-set-key (kbd "C-c v") 'magit-status)
-(global-set-key (kbd "C-c h") 'magit-log)
-
 ;; Files
 (global-set-key (kbd "C-x f") 'ido-find-file)
 (global-set-key (kbd "C-x s") 'save-buffer)

@@ -50,11 +50,17 @@
 (require 'switch-window)
 (setq switch-window-shortcut-style 'alphabet)
 
-;; SCV 
+;; Ediff
+(setq ediff-split-window-function 'split-window-horizontally)
+
+;; Diable VC-DIR 
 (setq vc-handled-backends nil) 
-;; Magit
-(require 'magit)
-;; Psvn
+;; Magit 
+(require 'magit) 
+;; Subversion 
+(setq svn-status-verbose nil) 
+(setq svn-status-hide-unknown t) 
+(setq svn-status-hide-unmodified t) 
 (require 'psvn)
 
 ;; Scope
