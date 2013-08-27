@@ -53,7 +53,7 @@
 ;; Ediff
 (setq ediff-split-window-function 'split-window-horizontally)
 
-;; Diable VC-DIR 
+;; Disable VC 
 (setq vc-handled-backends nil) 
 ;; Magit 
 (require 'magit) 
