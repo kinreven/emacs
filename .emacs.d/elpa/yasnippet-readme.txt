@@ -29,9 +29,6 @@
           `yas-snippet-dirs' and is used for deciding which
           snippets to consider for the active buffer.
 
-          Deprecated `yas/mode-symbol' aliases this variable for
-          backward-compatibility.
-
   Major commands are:
 
       M-x yas-expand

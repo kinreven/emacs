@@ -32,6 +32,12 @@
 (global-set-key (kbd "C-c m") 'projectile-multi-occur)
 
 ;; CScope
+(global-set-key (kbd "M-/") 'ascope-find-functions-calling-this-function)
+(global-set-key (kbd "M-.") 'ascope-find-global-definition)
+(global-set-key (kbd "M-,") 'ascope-pop-mark)
+(global-set-key (kbd "M-'") 'ascope-find-this-text-string)
+(global-set-key (kbd "M-;") 'ascope-find-this-symbol)
+
 (global-set-key (kbd "C-/") 'ascope-find-functions-calling-this-function)
 (global-set-key (kbd "C-.") 'ascope-find-global-definition)
 (global-set-key (kbd "C-,") 'ascope-pop-mark)
