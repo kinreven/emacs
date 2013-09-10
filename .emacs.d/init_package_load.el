@@ -73,7 +73,7 @@
 
 ;; Yasnippet
 (require 'yasnippet)
-(yas-load-directory "~/.emacs.d/elpa/yasnippet-20130902.1201/snippets")
+(yas-load-directory "~/.emacs.d/elpa/yasnippet-0.8.0/snippets")
 (yas-global-mode 1)
 (yas-minor-mode-on)
 
