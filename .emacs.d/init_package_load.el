@@ -13,10 +13,8 @@
 (require 'ido-ubiquitous)
 (require 'flx-ido)
 (setq ido-enable-flex-matching t)
-(setq ido-use-filename-at-point nil)
-(setq ido-auto-merge-work-directories-length 0)
-;(setq ido-use-virtual-buffers t)
-(setq ido-default-buffer-method 'selected-window)
+(setq ido-use-filename-at-point 'guess)
+(setq ido-create-new-buffer 'aways)
 (ido-mode 1)
 (ido-everywhere 1)
 (ido-ubiquitous-mode 1)
@@ -73,7 +71,7 @@
 
 ;; Yasnippet
 (require 'yasnippet)
-(yas-load-directory "~/.emacs.d/elpa/yasnippet-0.8.0/snippets")
+(yas-load-directory "~/.emacs.d/elpa/yasnippet-20130907.1855/snippets")
 (yas-global-mode 1)
 (yas-minor-mode-on)
 

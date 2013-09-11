@@ -201,7 +201,7 @@
 	       (1 6 8)))
 	     "Weblog maintenance via XML-RPC APIs [bzr]" single])
  (web-mode .
-	   [(20130910 54)
+	   [(20130911 127)
 	    nil "major mode for editing html templates [github]" tar])
  (web .
       [(20130827 1312)
@@ -491,6 +491,9 @@
  (thumb-through .
 		[(20120118 2134)
 		 nil "Plain text reader of HTML documents [github]" single])
+ (thrift .
+	 [(20130910 1212)
+	  nil "Major mode for Apache Thrift files [github]" single])
  (thread-dump .
 	      [(20130323 2125)
 	       nil "Java thread dump viewer [github]" single])
@@ -1523,7 +1526,7 @@
 	  [(20121025 1200)
 	   nil "Predictive abbreviation expansion [hg]" single])
  (p4 .
-     [(20130909 2252)
+     [(20130910 1156)
       nil "Simple Perforce-Emacs Integration [github]" single])
  (outshine .
 	   [(20130815 1459)
@@ -1724,7 +1727,7 @@
 		 [(20130131 720)
 		  nil "Open a junk (memo) file to try-and-error [wiki]" single])
  (on-screen .
-	    [(20130901 1542)
+	    [(20130909 2214)
 	     nil "guide your eyes while scrolling [github]" single])
  (omnisharp .
 	    [(20130905 2218)
@@ -1828,7 +1831,7 @@
 	   (0 1)))
 	 "Client for Clojure nREPL [github]" single])
  (notmuch .
-	  [(20130908 2241)
+	  [(20130910 807)
 	   nil "No description available. [git]" tar])
  (nose .
        [(20110804 819)
@@ -1915,7 +1918,7 @@
 	       [(20120608 1835)
 		nil "Create and manage multiple shells within Emacs [wiki]" single])
  (multi .
-	[(20130901 103)
+	[(20130910 2047)
 	 ((emacs
 	   (24)))
 	 "Clojure-style multi-methods for emacs lisp [github]" single])
@@ -2057,6 +2060,11 @@
  (maude-mode .
 	     [(20130604 925)
 	      nil "Emacs mode for the programming language Maude [svn]" single])
+ (math-symbols .
+	       [(20130910 931)
+		((helm
+		  (1 0)))
+		"Math Symbol Input methods and conversion tools [github]" tar])
  (markup-faces .
 	       [(20130117 1146)
 		nil "collection of faces for markup language modes [github]" single])
@@ -2142,7 +2150,7 @@
 			       [(20130730 1032)
 				nil "Advice for magit-log-edit-commit [github]" single])
  (magit .
-	[(20130904 2310)
+	[(20130910 2355)
 	 ((cl-lib
 	   (0 3))
 	  (git-commit-mode
@@ -2170,7 +2178,7 @@
 	 (0)))
        "Linewise User Interface [github]" tar])
  (lua-mode .
-	   [(20130902 1338)
+	   [(20130910 922)
 	    nil "a major-mode for editing Lua scripts [github]" single])
  (love-minor-mode .
 		  [(20130429 1759)
@@ -2388,6 +2396,9 @@
 	 (inflections
 	  (1 1)))
 	"build functions which contextually jump between files [github]" single])
+ (jtags .
+	[(20111208 1922)
+	 nil "enhanced tags functionality for Java development [git]" tar])
  (jsx-mode .
 	   [(20130909 224)
 	    nil "major mode for JSX [github]" single])
@@ -2478,7 +2489,7 @@
 			  [(20130728 952)
 			   nil "Use isearch to search for the symbol at point [github]" single])
  (isearch+ .
-	   [(20130909 312)
+	   [(20130910 2150)
 	    nil "Extensions to `isearch.el' (incremental search). [wiki]" single])
  (irfc .
        [(20120824 1735)
@@ -3004,7 +3015,7 @@
 		 [(20130412 1615)
 		  nil "Google's C/C++ style for c-mode [svn]" single])
  (golden-ratio .
-	       [(20130820 1612)
+	       [(20130910 1142)
 		nil "Automatic resizing of Emacs windows to the golden ratio [github]" single])
  (god-mode .
 	   [(20130812 1018)
@@ -3115,6 +3126,15 @@
  (git-annex .
 	    [(20130816 1258)
 	     nil "Mode for easy editing of git-annex'd files [github]" single])
+ (git .
+      [(20130910 2031)
+       ((s
+	 (1 7 0))
+	(dash
+	 (2 2 0))
+	(f
+	 (0 10 0)))
+       "An Elisp API for programmatically using Git [github]" single])
  (gist .
        [(20130315 2306)
 	((eieio
@@ -3657,7 +3677,7 @@
 	 [(20130827 1016)
 	  nil "Erlang major mode [github]" tar])
  (ergoemacs-mode .
-		 [(20130909 2249)
+		 [(20130910 812)
 		  ((org-cua-dwim
 		    (0 5)))
 		  "Emacs mode based on common modern software interface and ergonomics. [github]" tar])
@@ -3743,7 +3763,7 @@
        [(20130821 1048)
 	nil "The Emacs Multimedia System [git]" tar])
  (emmet-mode .
-	     [(20130816 1530)
+	     [(20130910 1905)
 	      nil "Unofficial Emmet's support for emacs [github]" single])
  (emamux-ruby-test .
 		   [(20130811 1203)
@@ -3852,7 +3872,7 @@
 		(24 1)))
 	      "web interface to Elfeed [github]" tar])
  (elfeed .
-	 [(20130909 2313)
+	 [(20130910 1838)
 	  ((emacs
 	    (24 1)))
 	  "an Emacs Atom/RSS feed reader [github]" tar])
@@ -3958,7 +3978,7 @@
       [(20130826 1941)
        nil "a code browser for Emacs [github]" tar])
  (ebib .
-       [(20130910 334)
+       [(20130910 2250)
 	nil "a BibTeX database manager [github]" tar])
  (easy-after-load .
 		  [(20121224 2049)
@@ -4332,7 +4352,7 @@
 		      (0 8 0)))
 		    "Yasnippets for clojure [github]" tar])
  (clojure-mode .
-	       [(20130820 1515)
+	       [(20130910 1639)
 		nil "Major mode for Clojure code [github]" single])
  (clojure-cheatsheet .
 		     [(20130831 1134)
@@ -4501,7 +4521,7 @@
 		  [(20130422 1322)
 		   nil "Fixing weird quirks and poor defaults [github]" single])
  (bdo .
-      [(20130904 2341)
+      [(20130910 1026)
        nil "Do things to a browser page from Emacs. BETA! [github]" tar])
  (bbdb2erc .
 	   [(20130607 829)
@@ -4672,7 +4692,7 @@
 	   [(20130606 946)
 	    nil "open anything / QuickSilver-like candidate-selection framework [git]" tar])
  (anti-zenburn-theme .
-		     [(20130901 236)
+		     [(20130910 2217)
 		      nil "Low-contrast Zenburn-inverted theme [github]" single])
  (ansi .
        [(20130827 1653)
@@ -4805,9 +4825,6 @@
  (abc-mode .
 	   [(20130607 917)
 	    nil "Major mode for editing abc music files [github]" single])
- (jtags .
-	[(20111208 1922)
-	 nil "enhanced tags functionality for Java development [git]" tar])
  (org-mac-link-grabber .
 		       [(20130514 1519)
 			nil "Grab links and url from various mac [git]" single])
