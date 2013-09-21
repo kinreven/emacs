@@ -1,6 +1,7 @@
 (defun my-c-mode-common-hook ()
              (linum-mode 1)
              (hs-minor-mode 1)
+             (which-function-mode 1)
              (setq c-basic-offset 4)
              (setq tab-width 4)
              (setq indent-tabs-mode nil)

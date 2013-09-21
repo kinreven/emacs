@@ -6,11 +6,11 @@ Highlight the formatting of git commit messages and indicate errors according
 to the guidelines for commit messages (see
 http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
 
-Highlight the first line (aka "summary") specially if it exceeds 54
-characters.
+Highlight the first line (aka "summary") specially if it exceeds 50
+characters (configurable using `git-commit-summary-max-length').
 
 Enable `auto-fill-mode' and set the `fill-column' to 72 according to the
-aforementioned guidelines.
+aforementioned guidelines (configurable using `git-commit-fill-column').
 
 Headers
 

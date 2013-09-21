@@ -11,14 +11,12 @@
 ;; Ido mode
 (require 'ido)
 (require 'ido-ubiquitous)
-(require 'flx-ido)
 (setq ido-enable-flex-matching t)
 (setq ido-use-filename-at-point 'guess)
 (setq ido-create-new-buffer 'always)
 (ido-mode 1)
 (ido-everywhere 1)
 (ido-ubiquitous-mode 1)
-(flx-ido-mode 1)
 
 ;; Smex
 (require 'smex)
@@ -40,16 +38,13 @@
 (setq sp-autoskip-closing-pair 'always)
 (smartparens-global-mode t)
 
-;; Windows number
-(require 'window-number)
-(window-number-meta-mode 1)
-
 ;; Switch windows
 (require 'switch-window)
 (setq switch-window-shortcut-style 'alphabet)
 
 ;; Ediff
 (setq ediff-split-window-function 'split-window-horizontally)
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 ;; Disable VC 
 (setq vc-handled-backends nil) 
@@ -109,6 +104,40 @@
 (add-to-list 'auto-mode-alist '("\\.mdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (setq markdown-command "cd ~/.emacs.d/ && pandoc -s -S -f markdown -t html -H github.css")
+
+;; Session
+(require 'session)
+(setq session-save-file (expand-file-name ".session" user-emacs-directory))
+(add-hook 'after-init-hook 'session-initialize)
+
+;; save a bunch of variables to the desktop file
+;; for lists specify the len of the maximal saved data also
+(setq desktop-globals-to-save
+      (append '((extended-command-history . 30)
+                (file-name-history        . 100)
+                (ido-last-directory-list  . 100)
+                (ido-work-directory-list  . 100)
+                (ido-work-file-list       . 100)
+                (grep-history             . 30)
+                (compile-history          . 30)
+                (minibuffer-history       . 50)
+                (query-replace-history    . 60)
+                (read-expression-history  . 60)
+                (regexp-history           . 60)
+                (regexp-search-ring       . 20)
+                (search-ring              . 20)
+                (comint-input-ring        . 50)
+                (shell-command-history    . 50)
+                desktop-missing-file-warning
+                tags-file-name
+                register-alist)))
+
+(when (eval-when-compile (and (>= emacs-major-version 24)
+                              (string< emacs-version "24.3.50")
+                              ))
+  (unless (boundp 'desktop-restore-frames)
+    (require-package 'frame-restore)
+    (frame-restore)))
 
 ;; VIM
 (require 'evil)

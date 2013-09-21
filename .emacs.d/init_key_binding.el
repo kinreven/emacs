@@ -58,6 +58,17 @@
 (global-set-key (kbd "C-x C-s") 'save-some-buffers)
 (global-set-key (kbd "C-x c") 'save-buffers-kill-emacs)
 
+;; Refine split window
+(defun split-window-func-with-other-buffer (split-function)
+  (lexical-let ((s-f split-function))
+    (lambda ()
+      (interactive)
+      (funcall s-f)
+      (set-window-buffer (next-window) (other-buffer)))))
+
+(global-set-key "\C-x2" (split-window-func-with-other-buffer 'split-window-vertically))
+(global-set-key "\C-x3" (split-window-func-with-other-buffer 'split-window-horizontally))
+
 ;; Windows move up/down
 (defun window-move-up (&optional arg)
 "Current window move-up 3 lines."
@@ -106,6 +117,14 @@
 
 ;; Align your code in a pretty way.
 (global-set-key (kbd "C-x \\") 'align-regexp)
+
+;; iSearch
+(define-key isearch-mode-map (kbd "C-o")
+  (lambda () (interactive)
+    (let ((case-fold-search isearch-case-fold-search))
+      (occur (if isearch-regexp
+                 isearch-string
+               (regexp-quote isearch-string))))))
 
 ;; Function key
 (global-set-key [f5] (lambda () (interactive) (eshell t)))

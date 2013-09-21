@@ -18,7 +18,10 @@
  )
 
 ;; Basic Configurations
-(setq frame-title-format '("" buffer-file-name ""))
+(setq frame-title-format
+      '((:eval (if (buffer-file-name)
+                   (abbreviate-file-name (buffer-file-name))
+                 "%b"))))
 (setq user-full-name "Kevin Ren")
 (setq user-mail-address "kinreven@gmail.com")
 (setq ring-bell-function 'ignore) 
@@ -34,6 +37,10 @@
 (setq term-buffer-maximum-size 0)
 (setq scroll-step 1 scroll-margin 3 scroll-conservatively 10000)
 (setq track-eol t)
+(setq compilation-scroll-output t)
+(setq case-fold-search t)
+(setq grep-highlight-matches t)
+(setq grep-scroll-output t)
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 (setq-default cursor-type 'box)
