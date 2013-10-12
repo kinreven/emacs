@@ -24,8 +24,8 @@
       `yas-extra-modes'
 
           A local variable that you can set in a hook to override
-          snippet-lookup based on major mode.  It is a symbol (or
-          list of symbols) that correspond to subdirectories of
+          snippet-lookup based on major mode.  It is a list of
+          symbols that correspond to subdirectories of
           `yas-snippet-dirs' and is used for deciding which
           snippets to consider for the active buffer.
 
