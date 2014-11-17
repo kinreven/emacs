@@ -21,13 +21,6 @@
           The deprecated `yas/root-directory' aliases this variable
           for backward-compatibility.
 
-      `yas-extra-modes'
-
-          A local variable that you can set in a hook to override
-          snippet-lookup based on major mode.  It is a list of
-          symbols that correspond to subdirectories of
-          `yas-snippet-dirs' and is used for deciding which
-          snippets to consider for the active buffer.
 
   Major commands are:
 
@@ -40,6 +33,11 @@
       M-x yas-load-directory
 
           Prompts you for a directory hierarchy of snippets to load.
+
+      M-x yas-activate-extra-mode
+
+          Prompts you for an extra mode to add snippets for in the
+          current buffer.
 
       M-x yas-insert-snippet
 

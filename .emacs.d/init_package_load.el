@@ -66,13 +66,13 @@
 
 ;; Yasnippet
 (require 'yasnippet)
-(yas-load-directory "~/.emacs.d/elpa/yasnippet-20131010.2/snippets")
+(yas-load-directory "~/.emacs.d/elpa/yasnippet-20141117.327/snippets")
 (yas-global-mode 1)
 (yas-minor-mode-on)
 
 ;; Auto Complete
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20130724.1750/dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20141111.2346/dict")
 (ac-config-default)
 (global-auto-complete-mode t)
 

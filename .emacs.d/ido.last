@@ -1,0 +1,26 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/kinreven/" . ".emacs.d/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/kinreven/.emacs.d/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ 
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/kinreven/.emacs.d/" (21610 609 0 0) "recentf" "init_win.el" "init_setting.el" "init_prog_lang.el" "init_package_load.el" "init_osx.el" "init_key_binding.el" "init_global.el" "github.css" "elpa/" "auto-save-list/" "ac-comphist.dat" ".session" ".DS_Store" "../" "./")
+
+ ("/Users/kinreven/" (21610 574 0 0) "Public/" "Pictures/" "Music/" "Movies/" "Library/" "Emacs/" "Downloads/" "Documents/" "Desktop/" "Applications/" ".zshrc-e" ".zshrc" ".zsh_history" ".zsh-update" ".zcompdump-Kevin’s MacBook Pro-5.0.5" ".viminfo" ".Trash/" ".smex-items" ".oh-my-zsh/" ".local/" ".emacs.d/" ".emacs" ".DS_Store" ".CFUserTextEncoding" ".bash_history" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

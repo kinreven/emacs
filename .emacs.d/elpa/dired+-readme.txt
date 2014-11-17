@@ -9,10 +9,24 @@
  All of the new functions, variables, and faces defined here have
  the prefix `diredp-' (for Dired Plus) in their names.
 
- Additional suggested key bindings:
 
-   (define-key ctl-x-map   "d" 'diredp-dired-files)
-   (define-key ctl-x-4-map "d" 'diredp-dired-files-other-window)
+ Wraparound Navigation
+ ---------------------
+
+ In vanilla Dired, `dired-next-marked-file' (`M-}' or `* C-n') and
+ `dired-previous-marked-file' (`M-{' or `* C-p') wrap around when
+ you get to the end or the beginning of the Dired buffer.  Handy.
+
+ But the other navigation commands do not wrap around.  In `Dired+'
+ they do, provided option `diredp-wrap-around-flag' is non-nil,
+ which it is by default.  This means the following commands:
+
+   `diredp-next-line'     - `n', `C-n', `down', `SPC'
+   `diredp-previous-line' - `p', `C-p', `up'
+   `diredp-next-dirline'  - `>'
+   `diredp-prev-dirline'  - `<'
+   `diredp-next-subdir'   - `C-M-n'
+   `diredp-prev-subdir'   - `C-M-p'
 
 
  Hide/Show Details
@@ -22,6 +36,11 @@
  Use `(' anytime to toggle this hiding.  You can use option
  `diredp-hide-details-initially-flag' to change the default/initial
  state.  See also option `diredp-hide-details-propagate-flag'.
+
+ NOTE: If you do not want to hide details initially then you must
+       either (1) change `diredp-hide-details-initially-flag' using
+       Customize (recommended) or (2) set it to `nil' (e.g., using
+       `setq') *BEFORE* loading `dired+.el'.
 
  If you have an Emacs version older than 24.4, you can use library
  `dired-details+.el' (plus `dired-details.el') to get similar
@@ -119,71 +138,107 @@
  to retrieve them, and `C-M-<' (in Dired) to open Dired on them.
 
 
- Wraparound Navigation
- ---------------------
+ Image Files
+ -----------
 
- In vanilla Dired, `dired-next-marked-file' (`M-}' or `* C-n') and
- `dired-previous-marked-file' (`M-{' or `* C-p') wrap around when
- you get to the end or the beginning of the Dired buffer.  Handy.
+ `Dired+' provides several enhancements regarding image files.
+ Most of these require standard library `image-dired.el'.  One of
+ them, command `diredp-do-display-images', which displays all of
+ the marked image files, requires library `image-file.el'.
 
- But the other navigation commands do not wrap around.  In Dired+
- they do, provided option `diredp-wrap-around-flag' is non-nil,
- which it is by default.  This means the following commands:
+ `Dired+' loads these libraries automatically, if available, which
+ means an Emacs version that supports image display (Emacs 22 or
+ later).  (You must of course have installed whatever else your
+ Emacs version needs to display images.)
 
-   `diredp-next-line'     - `n', `C-n', `down', `SPC'
-   `diredp-previous-line' - `p', `C-p', `up'
-   `diredp-next-dirline'  - `>'
-   `diredp-prev-dirline'  - `<'
-   `diredp-next-subdir'   - `C-M-n'
-   `diredp-prev-subdir'   - `C-M-p'
+ Besides command `diredp-do-display-images', see the commands whose
+ names have prefix `diredp-image-'.  And see options
+ `diredp-image-preview-in-tooltip' and
+ `diredp-auto-focus-frame-for-thumbnail-tooltip-flag'.
 
 
  Inserted Subdirs, Multiple Dired Buffers, Files from Anywhere,...
  -----------------------------------------------------------------
 
- These two standard Dired features are worth pointing out:
+ These three standard Dired features are worth pointing out.  The
+ third in particular is little known because (a) it is limited in
+ vanilla Dired and (b) you cannot use it interactively.
 
- * You can insert multiple subdirectory listings into a single
-   Dired buffer using `i' on each subdir line.  Use `C-u i' to
-   specify `ls' switches.  Specifying switch `R' inserts the
-   inserted subdirectory's subdirs also, recursively.  You can also
-   use `i' to bounce between a subdirectory line and its
-   inserted-listing header line.  You can delete a subdir listing
-   using `C-u k' on its header line.  You can hide/show an inserted
-   subdir using `$' and `M-$'.  You can use `C-_' to undo any of
-   these operations.
+  * You can pass a glob pattern with wildcards to `dired'
+    interactively, as the file name.
 
- * You can open a Dired buffer for an arbitrary set of files, from
-   different directories.
+  * You can insert multiple subdirectory listings into a single
+    Dired buffer using `i' on each subdir line.  Use `C-u i' to
+    specify `ls' switches.  Specifying switch `R' inserts the
+    inserted subdirectory's subdirs also, recursively.  You can
+    also use `i' to bounce between a subdirectory line and its
+    inserted-listing header line.  You can delete a subdir listing
+    using `C-u k' on its header line.  You can hide/show an
+    inserted subdir using `$'.  You can use `C-_' to undo any of
+    these operations.
 
-   First, you can pass a glob pattern with wildcards to `dired'
-   interactively, as the file name.
+  * You can open a Dired buffer for an arbitrary set of files from
+    different directories.  You do this by invoking `dired'
+    non-interactively, passing it a cons of a Dired buffer name and
+    the file names.  Relative file names are interpreted relative
+    to the value of `default-directory'.  Use absolute file names
+    when appropriate.
 
-   Beyond that, you can invoke `dired' non-interactively, passing
-   it a cons of buffer name and file names.  Relative file names
-   are interpreted relative to the value of `default-directory'.
-   Use absolute file names if appropriate.
+ `Dired+' makes these features more useful.
+
+ `$' is improved: It is a simple toggle - it does not move the
+ cursor forward.  `M-$' advances the cursor, in addition to
+ toggling like `$'.  `C-u $' does hide/show all (what `M-$' does in
+ vanilla Dired).
+
+ `i' is improved in these ways:
+
+  * Once a subdir has been inserted, `i' bounces between the subdir
+    listing and the subdir line in the parent listing.  If the
+    parent dir is hidden, then `i' from a subdir opens the parent
+    listing so it can move to the subdir line there (Emacs 24+).
+
+  * Vanilla Dired lets you create a Dired listing with files and
+    directories from arbitrary locations, but you cannot insert
+    (`i') such a directory if it is not in the same directory tree
+    as the `default-directory' used to create the Dired buffer.
+    `Dired+' removes this limitation; you can insert any non-root
+    directories (that is, not `/', `c:/', etc.).
+
+ `Dired+' lets you create Dired buffers that contain arbitrary
+ files and directories interactively, not just using Lisp.  Just
+ use a non-positive prefix arg (e.g., `C--') when invoking `dired'.
+
+ You are then prompted for the Dired buffer name (anything you
+ like, not necessarily a directory name) and the individual files
+ and directories that you want listed.
+
+ A non-negative prefix arg still prompts you for the `ls' switches
+ to use.  (So `C-0' does both: prompts for `ls' switches and for
+ the Dired buffer name and the files to list.)
 
  Some other libraries, such as `Bookmark+' and `Icicles', make it
  easy to create or re-create Dired buffers that list specific files
- and have a particular set of markings.  This can be handy for
- using Dired buffers to manage projects.  In such use cases you
- might have multiple Dired buffers that have quite specific
- contents and that you want to keep around during a session.
+ and have a particular set of markings.  `Bookmark+' records Dired
+ buffers persistently, remembering `ls' switches, markings, subdir
+ insertions, and hidden subdirs.  If you use `Icicles' then `dired'
+ is a multi-command: you can open multiple Dired buffers with one
+ `dired' invocation.
 
- This is one motivation for the Dired+ `diredp-*-recursive'
+ Dired can help you manage projects.  You might have multiple Dired
+ buffers with quite specific contents.  You might have some
+ subdirectories inserted in the same Dired buffer, and you might
+ have separate Dired buffers for some subdirectories.  Sometimes it
+ is useful to have both for the same subdirectory.  And sometimes
+ it is useful to move from one presentation to the other.
+
+ This is one motivation for the `Dired+' `diredp-*-recursive'
  commands, which act on the marked files in marked subdirectories,
- recursively.  In one sense these commands are an alternative to
+ recursively.  In one sense, these commands are an alternative to
  using a single Dired buffer with inserted subdirectories.  They
  let you use the same operations on the files in a set of Dired
  directories, without inserting those directories into an ancestor
  Dired buffer.
-
- So you might have some subdirectories inserted in the same Dired
- buffer, and you might have separate Dired buffers for some
- subdirectories.  Sometimes it is useful to have both for the same
- subdirectory.  And sometimes it is useful to move from one
- presentation to the other.
 
  You can use command `diredp-dired-inserted-subdirs' to open a
  separate Dired buffer for each of the subdirs that is inserted in
@@ -201,17 +256,17 @@
 
  Faces defined here:
 
-   `diredp-compressed-file-suffix', `diredp-date-time',
-   `diredp-deletion', `diredp-deletion-file-name',
-   `diredp-dir-heading', `diredp-dir-priv', `diredp-display-msg',
-   `diredp-exec-priv', `diredp-executable-tag', `diredp-file-name',
-   `diredp-file-suffix', `diredp-flag-mark',
+   `diredp-autofile-name', `diredp-compressed-file-suffix',
+   `diredp-date-time', `diredp-deletion',
+   `diredp-deletion-file-name', `diredp-dir-heading',
+   `diredp-dir-priv', `diredp-exec-priv', `diredp-executable-tag',
+   `diredp-file-name', `diredp-file-suffix', `diredp-flag-mark',
    `diredp-flag-mark-line', `diredp-get-file-or-dir-name',
    `diredp-ignored-file-name', `diredp-link-priv',
    `diredp-mode-line-flagged', `diredp-mode-line-marked'
    `diredp-no-priv', `diredp-number', `diredp-other-priv',
    `diredp-rare-priv', `diredp-read-priv', `diredp-symlink',
-   `diredp-write-priv'.
+   `diredp-tagged-autofile-name', `diredp-write-priv'.
 
  Commands defined here:
 
@@ -225,12 +280,14 @@
    `diredp-copy-tags-this-file', `diredp-copy-this-file',
    `diredp-decrypt-this-file', `diredp-delete-this-file',
    `diredp-describe-file', `diredp-describe-mode',
-   `diredp-dired-files', `diredp-dired-files-other-window',
    `diredp-dired-for-files', `diredp-dired-for-files-other-window',
    `diredp-dired-inserted-subdirs', `diredp-dired-plus-help',
+   `diredp-dired-recent-dirs',
+   `diredp-dired-recent-dirs-other-window',
    `diredp-dired-this-subdir', `diredp-dired-union',
    `diredp-dired-union-other-window',
    `diredp-do-async-shell-command-recursive', `diredp-do-bookmark',
+   `diredp-do-bookmark-dirs-recursive',
    `diredp-do-bookmark-in-bookmark-file',
    `diredp-do-bookmark-in-bookmark-file-recursive',
    `diredp-do-bookmark-recursive', `diredp-do-chmod-recursive',
@@ -254,12 +311,15 @@
    `diredp-do-verify-recursive', `diredp-downcase-recursive',
    `diredp-downcase-this-file', `diredp-ediff',
    `diredp-encrypt-this-file', `diredp-fileset',
-   `diredp-find-a-file', `diredp-find-a-file-other-frame',
+   `diredp-fileset-other-window', `diredp-find-a-file',
+   `diredp-find-a-file-other-frame',
    `diredp-find-a-file-other-window',
    `diredp-find-file-other-frame',
    `diredp-find-file-reuse-dir-buffer',
+   `diredp-find-line-file-other-window',
    `diredp-flag-region-files-for-deletion',
    `diredp-grep-this-file', `diredp-hardlink-this-file',
+   `diredp-highlight-autofiles-mode',
    `diredp-image-dired-comment-file',
    `diredp-image-dired-comment-files-recursive',
    `diredp-image-dired-copy-with-exif-name',
@@ -272,7 +332,7 @@
    `diredp-image-dired-tag-file',
    `diredp-image-dired-tag-files-recursive',
    `diredp-insert-as-subdir', `diredp-insert-subdirs',
-   `diredp-insert-subdirs-recursive',
+   `diredp-insert-subdirs-recursive', `diredp-kill-this-tree',
    `diredp-list-marked-recursive', `diredp-load-this-file',
    `diredp-marked', `diredp-marked-other-window',
    `diredp-marked-recursive',
@@ -295,7 +355,9 @@
    `diredp-mouse-do-shell-command', `diredp-mouse-do-symlink',
    `diredp-mouse-do-tag', `diredp-mouse-do-untag',
    `diredp-mouse-downcase', `diredp-mouse-ediff',
-   `diredp-mouse-find-file', `diredp-mouse-find-file-other-frame',
+   `diredp-mouse-find-file',
+   `diredp-mouse-find-line-file-other-window',
+   `diredp-mouse-find-file-other-frame',
    `diredp-mouse-find-file-reuse-dir-buffer',
    `diredp-mouse-flag-file-deletion', `diredp-mouse-mark',
    `diredp-mouse-mark-region-files', `diredp-mouse-mark/unmark',
@@ -330,8 +392,11 @@
 
  User options defined here:
 
-   `diff-switches', `diredp-hide-details-initially-flag' (Emacs
-   24.4+), `diredp-hide-details-propagate-flag' (Emacs 24.4+),
+   `diredp-auto-focus-frame-for-thumbnail-tooltip-flag',
+   `diredp-image-preview-in-tooltip', `diff-switches',
+   `diredp-hide-details-initially-flag' (Emacs 24.4+),
+   `diredp-highlight-autofiles-mode',
+   `diredp-hide-details-propagate-flag' (Emacs 24.4+),
    `diredp-prompt-for-bookmark-prefix-flag',
    `diredp-w32-local-drives', `diredp-wrap-around-flag'.
 
@@ -340,8 +405,7 @@
    `derived-mode-p' (Emacs < 22), `diredp-all-files',
    `diredp-ancestor-dirs', `diredp-bookmark',
    `diredp-create-files-non-directory-recursive',
-   `diredp-directories-within',
-   `diredp-dired-files-interactive-spec',
+   `diredp-delete-dups', `diredp-directories-within',
    `diredp-dired-plus-description',
    `diredp-dired-plus-description+links',
    `diredp-dired-plus-help-link', `diredp-dired-union-1',
@@ -349,20 +413,24 @@
    (Emacs 22+), `diredp-do-chxxx-recursive',
    `diredp-do-create-files-recursive', `diredp-do-grep-1',
    `diredp-ensure-mode', `diredp-fewer-than-2-files-p',
-   `diredp-find-a-file-read-args', `diredp-files-within',
-   `diredp-files-within-1',
+   `diredp-fileset-1', `diredp-find-a-file-read-args',
+   `diredp-files-within', `diredp-files-within-1',
    `diredp-fit-frame-unless-buffer-narrowed' (Emacs 24.4+),
    `diredp-get-confirmation-recursive', `diredp-get-files',
-   `diredp-get-files-for-dir', `diredp-hide-details-if-dired'
-   (Emacs 24.4+), `diredp-hide/show-details' (Emacs 24.4+),
+   `diredp-get-files-for-dir', `diredp-get-subdirs',
+   `diredp-hide-details-if-dired' (Emacs 24.4+),
+   `diredp-hide/show-details' (Emacs 24.4+),
+   `diredp-highlight-autofiles', `diredp-image-dired-required-msg',
    `diredp-internal-do-deletions', `diredp-list-files',
-   `diredp-make-find-file-keys-reuse-dirs',
+   `diredp-looking-at-p', `diredp-make-find-file-keys-reuse-dirs',
    `diredp-make-find-file-keys-not-reuse-dirs', `diredp-maplist',
    `diredp-marked-here', `diredp-mark-files-tagged-all/none',
    `diredp-mark-files-tagged-some/not-all',
    `diredp-nonempty-region-p', `diredp-paste-add-tags',
    `diredp-paste-replace-tags', `diredp-read-bookmark-file-args',
-   `diredp-remove-if-not', `diredp-set-tag-value',
+   `diredp-read-include/exclude', `diredp-recent-dirs',
+   `diredp-remove-if', `diredp-remove-if-not',
+   `diredp-root-directory-p', `diredp-set-tag-value',
    `diredp-string-match-p', `diredp-tag',
    `diredp-this-file-marked-p', `diredp-this-file-unmarked-p',
    `diredp-this-subdir', `diredp-untag', `diredp-y-or-n-files-p'.
@@ -372,7 +440,8 @@
    `diredp-file-line-overlay', `diredp-files-within-dirs-done',
    `diredp-font-lock-keywords-1', `diredp-hide-details-last-state'
    (Emacs 24.4+), `diredp-hide-details-toggled' (Emacs 24.4+),
-   `diredp-loaded-p', `diredp-menu-bar-encryption-menu',
+   `diredp-list-files-map', `diredp-loaded-p',
+   `diredp-menu-bar-encryption-menu',
    `diredp-menu-bar-images-menu.',
    `diredp-menu-bar-immediate-menu',
    `diredp-menu-bar-immediate-bookmarks-menu',
@@ -383,6 +452,10 @@
    `diredp-menu-bar-regexp-menu', `diredp-menu-bar-subdir-menu',
    `diredp-re-no-dot', `diredp-w32-drives-mode-map'.
 
+ Macros defined here:
+
+   `diredp-with-help-window'.
+
 
  ***** NOTE: The following macros defined in `dired.el' have
              been REDEFINED HERE:
@@ -390,9 +463,11 @@
  `dired-map-over-marks'    - Treat multiple `C-u' specially.
  `dired-mark-if'           - Better initial msg - Emacs bug #8523.
 
- ***** NOTE: The following functions defined in `dired.el' have
-             been REDEFINED HERE:
 
+ ***** NOTE: The following functions defined in `dired.el' have
+             been REDEFINED or ADVISED HERE:
+
+ `dired'                   - Doc string: non-positive prefix arg.
  `dired-do-delete'         - Display message to warn that marked,
                              not flagged, files will be deleted.
  `dired-do-flagged-delete' - Display message to warn that flagged,
@@ -401,6 +476,7 @@
  `dired-get-filename'      - Test `./' and `../' (like `.', `..').
  `dired-goto-file'         - Fix Emacs bug #7126.
                              Remove `/' from dir before compare.
+                             (Emacs < 24 only.)
  `dired-hide-details-mode' - Respect new user options:
                              * `diredp-hide-details-initially-flag'
                              * `diredp-hide-details-propagate-flag'
@@ -415,3 +491,5 @@
                              afterward, and bury its buffer. Do not
                              show a menu bar for pop-up frame.
  `dired-pop-to-buffer'     - Put window point at bob (bug #12281).
+                             (Emacs 22-24.1)
+ `dired-read-dir-and-switches' - Non-positive prefix arg behavior.
