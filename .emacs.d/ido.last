@@ -2,12 +2,18 @@
 
 ;; ----- ido-last-directory-list -----
 (
- ("/Users/kinreven/" . ".emacs.d/")
+ ("/Users/kinreven/Documents/Programming/PyPi/" . "picamera-1.2/")
+ ("/Users/kinreven/Documents/Programming/" . "PyPi/")
+ ("/Users/kinreven/Documents/Working/" . "docs/")
+ ("/Users/kinreven/Documents/" . "Labs/")
+ ("/Users/kinreven/" . "Documents/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
+ "/Users/kinreven/Documents/Labs/"
  "/Users/kinreven/.emacs.d/"
+ "/Users/kinreven/Documents/Programming/PyPi/picamera-1.2/"
 )
 
 ;; ----- ido-work-file-list -----
@@ -17,9 +23,27 @@
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/Users/kinreven/.emacs.d/" (21610 609 0 0) "recentf" "init_win.el" "init_setting.el" "init_prog_lang.el" "init_package_load.el" "init_osx.el" "init_key_binding.el" "init_global.el" "github.css" "elpa/" "auto-save-list/" "ac-comphist.dat" ".session" ".DS_Store" "../" "./")
+ ("/Users/kinreven/Documents/Labs/" (21396 8049 0 0) "tstools/" "TextClip/" "Test/" "taobao/" "menugenerator/" "main.c" "libvlc/" "kallocator/" "jd/" "goagent/" "dbus/" "CPlus/" "blackant/" "Anything/" ".DS_Store" "../" "./")
 
- ("/Users/kinreven/" (21610 574 0 0) "Public/" "Pictures/" "Music/" "Movies/" "Library/" "Emacs/" "Downloads/" "Documents/" "Desktop/" "Applications/" ".zshrc-e" ".zshrc" ".zsh_history" ".zsh-update" ".zcompdump-Kevin’s MacBook Pro-5.0.5" ".viminfo" ".Trash/" ".smex-items" ".oh-my-zsh/" ".local/" ".emacs.d/" ".emacs" ".DS_Store" ".CFUserTextEncoding" ".bash_history" "../" "./")
+ ("/Users/kinreven/Documents/" (21643 52591 0 0) "快盘/" "Working/" "Resume/" "Parallels/" "OmniFocus Backups/" "Labs/" "Hack/" "GAE/" "Emacs/" "Blog/" ".parallels-vm-directory/" ".localized" ".DS_Store" "../" "./")
+
+ ("/Users/kinreven/" (21656 3505 0 0) "Public/" "Pictures/" "Music/" "Movies/" "Library/" "Downloads/" "Documents/" "Desktop/" "Applications/" ".zshrc-e" ".zshrc" ".zsh_history" ".zsh-update" ".zcompdump-Kevin’s MacBook Pro-5.0.5" ".xlive/" ".viminfo" ".Trash/" ".smex-items" ".oh-my-zsh/" ".local/" ".emacs.d/" ".emacs" ".DS_Store" ".CFUserTextEncoding" ".bash_history" "../" "./")
+
+ ("/Users/kinreven/.emacs.d/" (21645 40967 0 0) "recentf" "init_win.el" "init_setting.el" "init_prog_lang.el" "init_package_load.el" "init_osx.el" "init_key_binding.el" "init_global.el" "ido.last" "github.css" "elpa/" "auto-save-list/" "ac-comphist.dat" ".session" ".emacs.desktop.lock" ".emacs.desktop" ".DS_Store" "../" "./")
+
+ ("/Users/kinreven/Documents/Programming/PyPi/picamera-1.2/" (21246 62550 0 0) "setup.py" "setup.cfg" "README.rst" "PKG-INFO" "picamera.egg-info/" "picamera/" "MANIFEST.in" "LICENSE.txt" ".DS_Store" "../" "./")
+
+ ("/Users/kinreven/Documents/Programming/PyPi/" (21250 2749 0 0) "picamera.pdf" "picamera-1.2.tar.gz" "picamera-1.2/" ".DS_Store" "../" "./")
+
+ ("/Users/kinreven/Documents/Programming/" (21497 41565 0 0) "Script Language/" "RTOS/" "PyPi/" "OS/" "Open Source/" "Multi-Media/" "Liyun/" "Embeded-FS/" "C Language/" "Buildroot/" ".DS_Store" "../" "./")
+
+ ("/Users/kinreven/Documents/Working/docs/" (21506 57182 0 0) "嵌入式系统设计师教程.pdf" "GStreamer应用程序开发手册.pdf" ".DS_Store" "../" "./")
+
+ ("/Users/kinreven/Documents/Working/toolchain/" (21497 41734 0 0) "mipsel-icatchtek-elf-64bit.tar.gz" "mipsel-icatchtek-elf-32bit.tar.gz" "buildroot-2014.02.icatchtek.tar" ".DS_Store" "../" "./")
+
+ ("/Users/kinreven/Documents/Working/achive/" (21134 4284 0 0) "spca6330.7z" "spca1628.7z" "spca1528.rar" ".DS_Store" "../" "./")
+
+ ("/Users/kinreven/Documents/Working/" (21497 41780 0 0) "toolchain/" "docs/" "achive/" ".DS_Store" "../" "./")
 )
 
 ;; ----- ido-unc-hosts-cache -----

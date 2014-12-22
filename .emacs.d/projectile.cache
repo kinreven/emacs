@@ -1,0 +1,1 @@
+#s(hash-table size 65 test equal rehash-size 1.5 rehash-threshold 0.8 data ("/Users/kinreven/Documents/Labs/kallocator/" (".DS_Store" "cscope.files" "cscope.out" "cscope.out.in" "cscope.out.po" "Makefile" "README" "debug.h" "kallocator.c" "kallocator.h" "safemem.c" "sample.c" "typedef.h")))

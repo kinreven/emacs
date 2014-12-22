@@ -72,7 +72,7 @@
 
 ;; Auto Complete
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20141111.2346/dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20141208.809/dict")
 (ac-config-default)
 (global-auto-complete-mode t)
 
