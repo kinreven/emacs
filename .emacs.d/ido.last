@@ -6,13 +6,13 @@
  ("/Users/kinreven/Documents/Programming/" . "PyPi/")
  ("/Users/kinreven/Documents/Working/" . "docs/")
  ("/Users/kinreven/Documents/" . "Labs/")
- ("/Users/kinreven/" . "Documents/")
+ ("/Users/kinreven/" . ".emacs.d/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
- "/Users/kinreven/Documents/Labs/"
  "/Users/kinreven/.emacs.d/"
+ "/Users/kinreven/Documents/Labs/"
  "/Users/kinreven/Documents/Programming/PyPi/picamera-1.2/"
 )
 
@@ -23,13 +23,13 @@
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/Users/kinreven/.emacs.d/" (21700 50178 0 0) "smex-items" "recentf" "projectile.cache" "projectile-bookmarks.eld" "init_win.el" "init_setting.el" "init_prog_lang.el" "init_package_load.el" "init_osx.el" "init_key_binding.el" "init_global.el" "ido.last" "github.css" "eshell/" "elpa/" "auto-save-list/" "ac-comphist.dat" ".session" ".emacs.desktop.lock" ".emacs.desktop" ".DS_Store" "../" "./")
+
+ ("/Users/kinreven/" (21700 49153 0 0) "快盘/" "Public/" "Pictures/" "Music/" "Movies/" "Library/" "Downloads/" "Documents/" "Desktop/" "Applications/" ".zshrc-e" ".zshrc" ".zsh_history" ".zsh-update" ".zcompdump-Kevin’s MacBook Pro-5.0.5" ".xlive/" ".viminfo" ".Trash/" ".ssh/" ".oh-my-zsh/" ".local/" ".emacs.d/" ".emacs" ".DS_Store" ".CFUserTextEncoding" ".bash_history" "../" "./")
+
  ("/Users/kinreven/Documents/Labs/" (21396 8049 0 0) "tstools/" "TextClip/" "Test/" "taobao/" "menugenerator/" "main.c" "libvlc/" "kallocator/" "jd/" "goagent/" "dbus/" "CPlus/" "blackant/" "Anything/" ".DS_Store" "../" "./")
 
  ("/Users/kinreven/Documents/" (21643 52591 0 0) "快盘/" "Working/" "Resume/" "Parallels/" "OmniFocus Backups/" "Labs/" "Hack/" "GAE/" "Emacs/" "Blog/" ".parallels-vm-directory/" ".localized" ".DS_Store" "../" "./")
-
- ("/Users/kinreven/" (21656 3505 0 0) "Public/" "Pictures/" "Music/" "Movies/" "Library/" "Downloads/" "Documents/" "Desktop/" "Applications/" ".zshrc-e" ".zshrc" ".zsh_history" ".zsh-update" ".zcompdump-Kevin’s MacBook Pro-5.0.5" ".xlive/" ".viminfo" ".Trash/" ".smex-items" ".oh-my-zsh/" ".local/" ".emacs.d/" ".emacs" ".DS_Store" ".CFUserTextEncoding" ".bash_history" "../" "./")
-
- ("/Users/kinreven/.emacs.d/" (21645 40967 0 0) "recentf" "init_win.el" "init_setting.el" "init_prog_lang.el" "init_package_load.el" "init_osx.el" "init_key_binding.el" "init_global.el" "ido.last" "github.css" "elpa/" "auto-save-list/" "ac-comphist.dat" ".session" ".emacs.desktop.lock" ".emacs.desktop" ".DS_Store" "../" "./")
 
  ("/Users/kinreven/Documents/Programming/PyPi/picamera-1.2/" (21246 62550 0 0) "setup.py" "setup.cfg" "README.rst" "PKG-INFO" "picamera.egg-info/" "picamera/" "MANIFEST.in" "LICENSE.txt" ".DS_Store" "../" "./")
 

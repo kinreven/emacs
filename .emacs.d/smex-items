@@ -1,0 +1,19 @@
+
+;; ----- smex-history -----
+(
+ eww
+ package-list-packages
+ c-mode
+ version
+ cd
+ 5x5
+ arp
+)
+
+;; ----- smex-data -----
+(
+ (version . 1)
+ (c-mode . 1)
+ (package-list-packages . 1)
+ (eww . 2)
+)
